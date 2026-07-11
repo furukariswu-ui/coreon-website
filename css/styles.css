@@ -1,0 +1,342 @@
+/* COREON — 全站樣式表 v2（圓潤現代 SaaS 風格）
+   依使用者提供的參考圖調整視覺方向：保留原品牌色票（暖橘 + 深藍綠 + 米白），
+   但改為圓角卡片、柔和陰影、區塊間漸層過渡與 hover 動態效果。
+   字體 Noto Sans TC（設計稿原字體 Barlow 為拉丁字體，不含中文字符）。
+   圖片素材：目前無真實照片／截圖，一律以 CSS/SVG 風格化示意圖呈現，待真實素材到位後替換。 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --color-bg: #faf4e8;
+  --color-surface: #f3e7d1;
+  --color-text: #16333a;
+  --color-accent: #e8912c;
+  --color-accent-2: #1d4a52;
+  --color-divider: color-mix(in srgb, #16333a 12%, transparent);
+
+  --color-neutral-100: #faf5ec;
+  --color-neutral-200: #f0e6d4;
+  --color-neutral-300: #ddd0b3;
+  --color-neutral-400: #c2b295;
+  --color-neutral-500: #a3937a;
+  --color-neutral-600: #7d6f5a;
+  --color-neutral-700: #5c5142;
+  --color-neutral-800: #3a3128;
+  --color-neutral-900: #241d16;
+
+  --color-accent-100: #fff3e0;
+  --color-accent-200: #fce0b0;
+  --color-accent-300: #f7c880;
+  --color-accent-400: #f2ac52;
+  --color-accent-500: #e8912c;
+  --color-accent-600: #cf7818;
+  --color-accent-700: #a55f13;
+  --color-accent-800: #74430e;
+  --color-accent-900: #402408;
+
+  --color-accent-2-100: #e3edee;
+  --color-accent-2-200: #c0d6d8;
+  --color-accent-2-300: #96bcbf;
+  --color-accent-2-400: #6a9da1;
+  --color-accent-2-500: #487d82;
+  --color-accent-2-600: #2f5f64;
+  --color-accent-2-700: #1d4a52;
+  --color-accent-2-800: #123138;
+  --color-accent-2-900: #0a1e22;
+
+  --font-heading: "Noto Sans TC", system-ui, sans-serif;
+  --font-heading-weight: 700;
+  --font-body: "Noto Sans TC", system-ui, sans-serif;
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px;
+
+  --radius-sm: 6px; --radius-md: 12px; --radius-lg: 18px; --radius-xl: 26px; --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 8px color-mix(in srgb, #241d16 10%, transparent);
+  --shadow-md: 0 8px 24px color-mix(in srgb, #241d16 12%, transparent);
+  --shadow-lg: 0 20px 48px color-mix(in srgb, #241d16 18%, transparent);
+  --glow-accent: 0 0 0 4px color-mix(in srgb, var(--color-accent) 18%, transparent), 0 12px 32px color-mix(in srgb, var(--color-accent) 28%, transparent);
+  --glow-teal: 0 0 0 4px color-mix(in srgb, var(--color-accent-2-500) 22%, transparent), 0 12px 32px color-mix(in srgb, var(--color-accent-2-700) 30%, transparent);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--color-bg); color: var(--color-text);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.65; font-weight: 400;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.3; letter-spacing: 0; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; } h2 { font-size: 32px; } h3 { font-size: 21px; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent-700); text-underline-offset: 3px; }
+img, svg { display: block; max-width: 100%; }
+.container { max-width: 1280px; margin: 0 auto; padding-left: var(--space-8); padding-right: var(--space-8); position: relative; z-index: 1; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--color-accent-700); outline-offset: 2px; }
+
+/* — motion: 淡入上浮，配合 IntersectionObserver 觸發 — */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* — 區塊間漸層過渡（取代生硬的色塊切割）—
+   做法：漸層是該區塊自己的 ::after，畫在自己底部邊緣「內側」，z-index 壓在內容下方，
+   絕對不會蓋到前一個區塊或自己的文字／按鈕（先前版本用負 margin 疊到上一區塊，導致按鈕被蓋住，已修正）。 */
+.fade-bottom { overflow: hidden; }
+.fade-bottom::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
+  pointer-events: none; z-index: 0;
+}
+.fade-to-teal::after { background: linear-gradient(to bottom, transparent, var(--color-accent-2-900)); }
+.fade-to-cream::after { background: linear-gradient(to bottom, transparent, var(--color-bg)); }
+.fade-to-surface::after { background: linear-gradient(to bottom, transparent, var(--color-surface)); }
+@media (max-width: 860px) { .fade-bottom::after { height: 72px; } }
+
+/* — hover 發光效果，用在卡片／按鈕上 — */
+.glow-hover { transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease; }
+.glow-hover:hover, .glow-hover:focus-visible { box-shadow: var(--glow-accent); transform: translateY(-4px); border-color: color-mix(in srgb, var(--color-accent) 45%, transparent); }
+.glow-hover--teal:hover, .glow-hover--teal:focus-visible { box-shadow: var(--glow-teal); }
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: 600;
+  font-size: 15px; line-height: 1.2; color: var(--color-text);
+  background: transparent; border: 1.5px solid var(--color-divider);
+  padding: 13px 26px; border-radius: var(--radius-pill);
+  transition: box-shadow .25s ease, transform .25s ease, background .25s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+.btn-primary:hover { background: var(--color-accent-600); box-shadow: var(--glow-accent); }
+.btn-secondary { background: var(--color-accent-2-900); color: #fff; border-color: var(--color-accent-2-900); }
+.btn-secondary:hover { background: var(--color-accent-2-700); box-shadow: var(--glow-teal); }
+.btn-outline { border-color: var(--color-accent); color: var(--color-accent-700); background: transparent; }
+.btn-outline:hover { background: var(--color-accent-100); box-shadow: var(--glow-accent); }
+.btn-on-dark { border-color: color-mix(in srgb, #fff 30%, transparent); color: #fff; }
+.btn-on-dark:hover { background: color-mix(in srgb, #fff 10%, transparent); }
+
+/* — cards — */
+.card { border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--color-divider); }
+.card-kicker { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-700); font-weight: 600; }
+.card-title { font-family: var(--font-heading); font-weight: 700; font-size: 19px; line-height: 1.35; }
+.card-body { margin: 0; font-size: 14.5px; opacity: 0.8; }
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; padding: 5px 14px; border-radius: var(--radius-pill); }
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-outline { border: 1.5px solid var(--color-accent); color: var(--color-accent-700); background: #fff; }
+.tag-on-dark { background: color-mix(in srgb, #fff 14%, transparent); color: #fff; }
+
+/* — icon badges — */
+.icon-badge {
+  width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+  flex: none;
+}
+.icon-badge--accent { background: var(--color-accent-100); color: var(--color-accent-700); }
+.icon-badge--teal { background: var(--color-accent-2-100); color: var(--color-accent-2-700); }
+.icon-badge--on-dark { background: color-mix(in srgb, #fff 12%, transparent); color: var(--color-accent-300); }
+.icon-badge--check { width: 26px; height: 26px; border-radius: 50%; background: var(--color-accent); color: #fff; }
+
+/* — layout helpers — */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+
+/* — nav — */
+.site-nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-8); border-bottom: 1px solid var(--color-divider);
+  position: sticky; top: 0; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(8px); z-index: 50;
+}
+.nav-brand { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; margin-right: auto; letter-spacing: 0.01em; }
+a.nav-brand { text-decoration: none; color: inherit; }
+.nav-mark-logo { height: 32px; width: auto; display: block; }
+.site-footer .nav-mark-logo { height: 28px; }
+.nav-links { display: flex; align-items: center; gap: var(--space-6); list-style: none; margin: 0; padding: 0; }
+.nav-links a:not(.btn) { color: inherit; text-decoration: none; font-size: 15px; font-weight: 500; position: relative; }
+.nav-links a:not(.btn)::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--color-accent);
+  transform: scaleX(0); transition: transform .25s ease; transform-origin: left;
+}
+.nav-links a:not(.btn):hover::after { transform: scaleX(1); }
+.nav-links a:not(.btn):hover { color: var(--color-accent-700); }
+.nav-toggle { display: none; }
+
+/* — hero — */
+.hero { padding: calc(var(--space-8) * 1.5) var(--space-8) calc(var(--space-8) * 2); position: relative; overflow: hidden; }
+.hero-highlight { color: var(--color-accent-700); }
+.hero-feature-list { list-style: none; margin: var(--space-4) 0 var(--space-6); padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.hero-feature-list li { display: flex; align-items: flex-start; gap: var(--space-3); }
+.hero-feature-list .icon-badge { width: 38px; height: 38px; border-radius: 10px; }
+.hero-feature-title { font-weight: 700; font-size: 15px; }
+.hero-feature-desc { font-size: 13.5px; opacity: 0.75; margin: 2px 0 0; }
+.hero-blob {
+  position: absolute; top: -80px; right: -60px; width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--color-accent-300), var(--color-accent-500) 60%, transparent 75%);
+  opacity: 0.35; z-index: 0; pointer-events: none;
+}
+.hero-dots {
+  position: absolute; top: 40px; right: 90px; width: 120px; height: 90px; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(color-mix(in srgb, var(--color-accent-700) 45%, transparent) 2px, transparent 2px);
+  background-size: 14px 14px; opacity: 0.5;
+}
+
+/* — dashboard mockup (CSS/SVG 示意圖，非真實截圖) — */
+.mockup-wrap { position: relative; z-index: 1; }
+.mockup-laptop {
+  background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-divider); overflow: hidden;
+}
+.mockup-topbar { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-divider); }
+.mockup-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--color-accent-400); }
+.mockup-dot:nth-child(2) { background: var(--color-accent-2-400); }
+.mockup-dot:nth-child(3) { background: var(--color-accent-600); }
+.mockup-brand { margin-left: var(--space-2); font-size: 12px; font-weight: 700; color: var(--color-accent-700); }
+.mockup-body { padding: var(--space-4); }
+.mockup-stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); margin-bottom: var(--space-4); }
+.mockup-stat { background: var(--color-neutral-100); border-radius: var(--radius-md); padding: var(--space-3); }
+.mockup-stat-value { font-family: var(--font-heading); font-weight: 700; font-size: 20px; }
+.mockup-stat-delta { font-size: 11px; color: var(--color-accent-700); font-weight: 600; margin-top: 2px; }
+.mockup-charts { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-3); }
+.mockup-panel { background: var(--color-neutral-100); border-radius: var(--radius-md); padding: var(--space-3); }
+.mockup-panel-title { font-size: 12px; opacity: 0.65; margin-bottom: var(--space-2); }
+.mockup-phone {
+  position: absolute; right: -22px; bottom: -28px; width: 128px; background: #16333a; border-radius: 22px;
+  padding: 8px; box-shadow: var(--shadow-lg); border: 1px solid var(--color-divider);
+}
+.mockup-phone-screen { background: #fff; border-radius: 14px; padding: var(--space-2); }
+.mockup-phone-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--color-neutral-200); font-size: 9px; }
+
+/* — sections — */
+section { padding: calc(var(--space-8) * 2) var(--space-8); position: relative; }
+.section-intro { text-align: center; max-width: 680px; margin: 0 auto var(--space-8); }
+.section-on-dark { background: var(--color-accent-2-900); color: var(--color-neutral-100); }
+.section-on-dark h2, .section-on-dark h3 { color: #fff; }
+.section-on-dark .section-intro p { opacity: 0.75; }
+
+/* — breadcrumb（內頁用）— */
+.breadcrumb { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0 0 var(--space-4); font-size: 13px; opacity: 0.65; flex-wrap: wrap; }
+.breadcrumb a { color: inherit; text-decoration: none; }
+.breadcrumb a:hover { color: var(--color-accent-700); }
+.breadcrumb li:not(:last-child)::after { content: "/"; margin-left: 8px; opacity: 0.5; }
+
+/* — 痛點卡片 — */
+.pain-card { padding: var(--space-6); text-align: left; }
+.pain-emoji { font-size: 30px; line-height: 1; margin-bottom: var(--space-3); display: block; }
+
+/* — 3 步驟流程（橫向，行動裝置改直向）— */
+.workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); align-items: stretch; }
+.workflow-step { position: relative; padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+.workflow-step-num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--color-accent); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 14px;
+  margin-bottom: var(--space-2);
+}
+.workflow-step:not(:last-child)::after {
+  content: ""; position: absolute; top: 50%; right: -28px; width: 32px; height: 2px;
+  background: repeating-linear-gradient(to right, var(--color-accent) 0 6px, transparent 6px 11px);
+}
+@media (max-width: 860px) {
+  .workflow-grid { grid-template-columns: 1fr; }
+  .workflow-step:not(:last-child)::after { display: none; }
+}
+
+/* — why 區塊：深色底 + checklist — */
+.why-columns { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--space-8); align-items: center; }
+.why-col-title { display: flex; align-items: center; gap: var(--space-2); font-size: 17px; font-weight: 700; margin-bottom: var(--space-4); }
+.check-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.check-list li { display: flex; gap: var(--space-3); }
+.check-item-title { font-weight: 700; font-size: 15px; }
+.check-item-desc { font-size: 13.5px; opacity: 0.75; margin: 2px 0 0; }
+.why-emblem { width: 150px; height: 150px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+.why-emblem-ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed color-mix(in srgb, var(--color-accent) 55%, transparent); animation: spin 18s linear infinite; }
+.why-emblem-core {
+  width: 92px; height: 92px; border-radius: 22px; background: linear-gradient(150deg, var(--color-accent-400), var(--color-accent-700));
+  display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: var(--shadow-lg);
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .why-emblem-ring { animation: none; } }
+
+/* — industries — */
+.industry-card { border-radius: var(--radius-lg); padding: var(--space-6); position: relative; }
+.industry-card--featured { background: var(--color-accent-2-900); color: #fff; border: none; }
+.industry-card--featured .card-body { color: color-mix(in srgb, #fff 80%, transparent); }
+.industry-card .tag { position: absolute; top: var(--space-4); right: var(--space-4); }
+.industry-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-top: var(--space-3); text-decoration: none; }
+
+/* — trust strip：以產業類別取代未經證實的客戶標誌 — */
+.trust-strip { padding: var(--space-8); }
+.trust-chip-row { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
+.trust-chip {
+  display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-pill); background: #fff; font-size: 14px; font-weight: 600;
+}
+.trust-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
+
+/* — final CTA — */
+.cta-section { padding-bottom: var(--space-6); }
+.cta-inner { max-width: 600px; }
+.cta-rocket { position: absolute; right: 6%; bottom: 0; width: 220px; opacity: 0.95; }
+.cta-form { display: flex; gap: var(--space-3); flex-wrap: wrap; max-width: 520px; }
+.cta-form input {
+  flex: 1; min-width: 240px; background: color-mix(in srgb, #fff 8%, transparent); color: #fff;
+  border: 1.5px solid color-mix(in srgb, #fff 22%, transparent); border-radius: var(--radius-pill);
+  padding: 13px 20px; font: inherit; font-size: 15px;
+}
+.cta-form input::placeholder { color: color-mix(in srgb, #fff 55%, transparent); }
+.cta-line-link { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 14px; color: var(--color-neutral-300); text-decoration: none; margin-top: var(--space-6); }
+.cta-line-badge { width: 20px; height: 20px; border-radius: 6px; background: #06c755; display: inline-flex; align-items: center; justify-content: center; font: 700 10px var(--font-heading); color: #fff; }
+
+.site-footer {
+  max-width: 1280px; margin: var(--space-8) auto 0; padding-top: var(--space-6);
+  border-top: 1px solid color-mix(in srgb, #fff 12%, transparent); display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: var(--space-3); position: relative; z-index: 1;
+}
+.footer-legal { display: flex; gap: var(--space-4); list-style: none; padding: 0; margin: 0; font-size: 13px; }
+.footer-legal a { color: var(--color-neutral-300); }
+.footer-copy { font-size: 13px; opacity: 0.6; text-align: center; }
+
+/* — responsive / mobile-first overrides — */
+@media (max-width: 960px) {
+  .why-columns { grid-template-columns: 1fr; }
+  .why-emblem { margin: 0 auto; }
+  .mockup-phone { display: none; }
+}
+@media (max-width: 860px) {
+  .container, section, .hero, .site-nav { padding-left: var(--space-4); padding-right: var(--space-4); }
+  .grid-2, .grid-3, .grid-4, .mockup-stat-row, .mockup-charts { grid-template-columns: 1fr; }
+  h1 { font-size: 30px; } h2 { font-size: 24px; }
+  .hero-blob { width: 320px; height: 320px; top: -60px; right: -100px; }
+
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: transparent;
+    cursor: pointer; margin-left: var(--space-3);
+  }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+    content: ""; display: block; width: 18px; height: 2px; background: var(--color-text); position: relative;
+  }
+  .nav-toggle span::before { position: absolute; top: -6px; }
+  .nav-toggle span::after { position: absolute; top: 6px; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--color-bg); border-bottom: 1px solid var(--color-divider);
+    flex-direction: column; align-items: flex-start; gap: 0; padding: var(--space-2) var(--space-4) var(--space-4);
+  }
+  .nav-links.is-open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a:not(.btn) { display: block; padding: var(--space-3) 0; width: 100%; }
+  .nav-links .btn { margin-top: var(--space-2); width: 100%; }
+  .cta-rocket { display: none; }
+}
