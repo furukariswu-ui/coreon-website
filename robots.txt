@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://coreon-website.furu-kariswu.workers.dev/sitemap.xml
+Sitemap: https://coreon.tw/sitemap.xml
