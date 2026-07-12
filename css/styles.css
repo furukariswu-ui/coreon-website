@@ -162,6 +162,7 @@ img, svg { display: block; max-width: 100%; }
 .nav-brand { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 800; font-size: 20px; margin-right: auto; letter-spacing: 0.01em; }
 a.nav-brand { text-decoration: none; color: inherit; }
 .nav-mark-logo { height: 32px; width: auto; display: block; }
+.nav-mark-logo--horizontal { height: 40px; }
 .site-footer .nav-mark-logo { height: 28px; }
 .nav-links { display: flex; align-items: center; gap: var(--space-6); list-style: none; margin: 0; padding: 0; }
 .nav-links a:not(.btn) { color: inherit; text-decoration: none; font-size: 15px; font-weight: 500; position: relative; }
@@ -318,6 +319,7 @@ section { padding: calc(var(--space-8) * 2) var(--space-8); position: relative; 
   .grid-2, .grid-3, .grid-4, .mockup-stat-row, .mockup-charts { grid-template-columns: 1fr; }
   h1 { font-size: 30px; } h2 { font-size: 24px; }
   .hero-blob { width: 320px; height: 320px; top: -60px; right: -100px; }
+  .nav-mark-logo--horizontal { height: 30px; }
 
   .nav-toggle {
     display: inline-flex; align-items: center; justify-content: center;
