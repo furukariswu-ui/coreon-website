@@ -276,6 +276,14 @@ section { padding: calc(var(--space-8) * 2) var(--space-8); position: relative; 
 .industry-card .tag { position: absolute; top: var(--space-4); right: var(--space-4); }
 .industry-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-top: var(--space-3); text-decoration: none; }
 
+/* — matrix table（模組×產業對照等比較表格，內頁用）— */
+.matrix-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--color-divider); background: #fff; }
+.matrix-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.matrix-table th, .matrix-table td { padding: var(--space-3) var(--space-4); text-align: left; border-bottom: 1px solid var(--color-divider); }
+.matrix-table th { font-family: var(--font-heading); font-weight: 700; background: var(--color-surface); white-space: nowrap; }
+.matrix-table tr:last-child td { border-bottom: none; }
+.matrix-table td:first-child, .matrix-table th:first-child { font-weight: 600; white-space: nowrap; }
+
 /* — trust strip：以產業類別取代未經證實的客戶標誌 — */
 .trust-strip { padding: var(--space-8); }
 .trust-chip-row { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; }
