@@ -63,9 +63,10 @@
 - JSON-LD（首頁用 Organization，方案頁用 Product + BreadcrumbList，未來 FAQ 頁用 FAQPage）
 - 語意化 HTML、`sitemap.xml`、`robots.txt`
 - 圖片一律 WebP，檔名語意化英文，alt 用中文；`images/` 依頁面 slug 分資料夾（`images/home/`、`images/solutions-finance-lending/` 等，已建好空資料夾）
+- **GA4 追蹤碼**（2026-08-02新增）：`<head>` 裡 viewport meta 後面要貼 gtag.js snippet，評估ID固定用 `G-TXDZ6K7RPB`，範本見 `index.html` 或任一既有頁面。新頁面上線前檢查有沒有漏貼。加強型評估（頁面瀏覽/捲動/外連點擊/表單互動等）已在GA4後台開啟，LINE點擊跟表單送出的轉換追蹤靠這個自動涵蓋，不用額外寫自訂事件。
 
 ## 部署與發佈流程（重要，之後每次更新都要照這個走）
-1. 在 Cowork 這裡（`~/Desktop/檔案整理/COREON官網_cowork/coreon-site/`）編輯內容
+1. 在 Cowork 這裡（`~/Desktop/專案資料/group-workspace/brands/coreon/COREON官網_cowork/coreon-site/`）編輯內容
 2. 雙擊資料夾裡的 **「發佈上線.command」**
 3. 這個腳本會自動：
    - 把檔案 rsync 複製到 `~/coreon-website-git`（**注意：不是這個資料夾本身在做 git**）
