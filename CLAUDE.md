@@ -105,7 +105,7 @@ Personal access tokens → Generate new token (classic)，勾 `repo` 權限）�
   `coreon-website.furu-kariswu.workers.dev`（已停用/不對外use，正式網址一律用 coreon.tw）
 
 ## 待確認/待辦
-- [ ] **⚠️ Cloudflare 部署異常**：2026-08-02 11:13 已 push 到 GitHub，超過30分鐘 coreon.tw 仍未更新（`/about/` 404、首頁 nav 仍舊版，`curl -I` 與瀏覽器都確認過）。GitHub 端確定有最新 commit，問題在 GitHub→Cloudflare 這段，需人工登入 Cloudflare Dashboard 查 `coreon-website` 專案的 Deployments 紀錄。細節見 `../策略進度/進度追蹤.md`。
+- [x] ~~Cloudflare 部署異常~~ **已找到根因並修復（2026-08-02）**：Cloudflare Workers 專案 Settings→Build 顯示「disconnected from your Git account」；根因是 GitHub 上「Cloudflare Workers and Pages」這個 App 的 Repository access 設成「Only select repositories」，清單裡只有 `taiwanrentals-web`、`neibook-windy-finance` 兩個 repo，`coreon-website` 從一開始就沒被加進去（不是憑證過期）。使用者已在 GitHub App 設定裡把 `coreon-website` 加入 Repository access 並存檔，Cloudflare 端「disconnected」警告已消失。**待驗證**：加回權限後还没自動觸發新build，等下一次 push 確認是否真的恢復自動部署，見 `../策略進度/進度追蹤.md`。
 - [ ] 剩餘 4 個頁面內容與建置（faq、contact、privacy-policy、terms）
 - [ ] 表單目前無後端串接（`#contact` 的 email 表單只是靜態，尚未接 Cloudflare Pages Functions 或第三方表單服務）
 - [ ] 全站 SEO 驗收清單 + 手機版本機預覽（尚未執行）
