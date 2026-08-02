@@ -8,7 +8,7 @@
 - **正式網域**：https://coreon.tw （已綁定，www.coreon.tw 會 301 轉址到 coreon.tw）
 - **部署**：Cloudflare Workers & Pages，專案名稱 `coreon-website`
 - **原始碼**：GitHub `furukariswu-ui/coreon-website`（main branch）
-- **本機專案位置**：`~/Desktop/檔案整理/COREON官網_cowork/coreon-site/`
+- **本機專案位置**：`~/Desktop/專案資料/group-workspace/brands/coreon/COREON官網_cowork/coreon-site/`（2026-08-02 更正兩次：先從舊的 `~/Desktop/檔案整理/` 搬到 group-workspace，同一天稍晚品牌資料夾又從錯字 `cornon` 正名為 `coreon`，這行對應更新）
 
 ## 品牌資訊
 - **一句話定位**：不只管客戶，更驅動核心業務——「產業營運大腦」
@@ -105,6 +105,7 @@ Personal access tokens → Generate new token (classic)，勾 `repo` 權限）�
   `coreon-website.furu-kariswu.workers.dev`（已停用/不對外use，正式網址一律用 coreon.tw）
 
 ## 待確認/待辦
+- [ ] **⚠️ Cloudflare 部署異常**：2026-08-02 11:13 已 push 到 GitHub，超過30分鐘 coreon.tw 仍未更新（`/about/` 404、首頁 nav 仍舊版，`curl -I` 與瀏覽器都確認過）。GitHub 端確定有最新 commit，問題在 GitHub→Cloudflare 這段，需人工登入 Cloudflare Dashboard 查 `coreon-website` 專案的 Deployments 紀錄。細節見 `../策略進度/進度追蹤.md`。
 - [ ] 剩餘 4 個頁面內容與建置（faq、contact、privacy-policy、terms）
 - [ ] 表單目前無後端串接（`#contact` 的 email 表單只是靜態，尚未接 Cloudflare Pages Functions 或第三方表單服務）
 - [ ] 全站 SEO 驗收清單 + 手機版本機預覽（尚未執行）
