@@ -111,6 +111,25 @@ section{position:relative;padding:130px 0}
 
 /* ===== 01 HERO ===== */
 .hero{padding:56px 0 40px}
+.hero-bleed{
+  min-height:640px;display:flex;align-items:center;
+  background-image:
+    linear-gradient(to right, var(--bg) 0%, var(--bg) 34%, rgba(247,243,237,.85) 44%, rgba(247,243,237,.3) 60%, transparent 72%),
+    url('/images/home/hero-bg.png');
+  background-size:100% 100%, cover;
+  background-position:left center, 78% center;
+  background-repeat:no-repeat, no-repeat;
+}
+@media(max-width:960px){
+  .hero-bleed{
+    min-height:auto;
+    background-image:
+      linear-gradient(to bottom, var(--bg) 0%, var(--bg) 46%, rgba(247,243,237,.3) 72%, transparent 100%),
+      url('/images/home/hero-bg.png');
+    background-size:100% 100%, cover;
+    background-position:top, bottom center;
+  }
+}
 .hero-grid{display:grid;grid-template-columns:.62fr 1fr;gap:40px;align-items:center}
 .hero h1{font-size:clamp(36px,5vw,64px)}
 .hero .lede-sm{margin-top:20px;color:var(--ink-soft);font-size:17px;font-weight:600}
@@ -118,7 +137,7 @@ section{position:relative;padding:130px 0}
 .hero-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
 .hero-visual{border-radius:24px;overflow:hidden}
 .hero-visual img{width:100%;height:auto;display:block}
-@media(max-width:960px){.hero-grid{grid-template-columns:1fr}}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-grid>div:last-child{min-height:280px}}
 
 .caps{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .caps-in{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -129,6 +148,17 @@ section{position:relative;padding:130px 0}
 @media(max-width:760px){.caps-in{grid-template-columns:repeat(2,1fr)}.cap{border-left:0;border-bottom:1px solid var(--line)}}
 
 /* ===== 02 PAIN ===== */
+.pain-bleed{
+  background-image:
+    linear-gradient(to right, var(--bg) 0%, var(--bg) 40%, rgba(247,243,237,.72) 55%, rgba(247,243,237,.55) 100%),
+    url('/images/home/problem-bg.png');
+  background-size:100% 100%, cover;
+  background-position:left center, center;
+  background-repeat:no-repeat, no-repeat;
+}
+@media(max-width:960px){
+  .pain-bleed{background-image:linear-gradient(to bottom, var(--bg) 0%, var(--bg) 55%, rgba(247,243,237,.6) 100%), url('/images/home/problem-bg.png');background-position:top, center;}
+}
 .pain-grid{display:grid;grid-template-columns:.8fr 1fr;gap:56px;align-items:center}
 @media(max-width:960px){.pain-grid{grid-template-columns:1fr}}
 .pain-list{margin-top:26px;display:flex;flex-direction:column;gap:16px}
@@ -280,7 +310,7 @@ footer{border-top:1px solid var(--line);padding:44px 0}
 <main>
 
   <!-- 01 HERO -->
-  <section class="hero" id="top">
+  <section class="hero hero-bleed" id="top">
     <div class="wrap hero-grid">
       <div class="reveal">
         <span class="eyebrow">COREON</span>
@@ -292,9 +322,7 @@ footer{border-top:1px solid var(--line);padding:44px 0}
           <a href="/about/" class="btn btn-ghost">了解 COREON</a>
         </div>
       </div>
-      <div class="reveal hero-visual" aria-hidden="true">
-        <img src="/images/home/hero-bg.png" alt="COREON 營運儀表板與行動裝置介面">
-      </div>
+      <div aria-hidden="true"></div>
     </div>
   </section>
 
@@ -308,7 +336,7 @@ footer{border-top:1px solid var(--line);padding:44px 0}
   </section>
 
   <!-- 02 PAIN -->
-  <section id="pain">
+  <section id="pain" class="pain-bleed">
     <div class="wrap pain-grid">
       <div class="reveal">
         <span class="eyebrow">真正昂貴的</span>
