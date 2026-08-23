@@ -13,187 +13,166 @@
   gtag('config', 'G-TXDZ6K7RPB');
 </script>
 
-<title>產業解決方案｜COREON 系統模組總覽</title>
-<meta name="description" content="COREON 依產業打造專屬系統模組：金融融資管理系統已上線，補習班、餐飲與飲料連鎖管理系統陸續推出。一次看懂各產業適用的 AI 辨識、LINE 自動化與分潤管理模組。">
+<title>產業場景｜COREON 專業服務業營運底座</title>
+<meta name="description" content="COREON 從 LegalTech 出發，打造專業服務業的新營運底座：法律服務、財會與稅務、顧問服務、建築與設計、醫療與健康管理。">
 <link rel="canonical" href="https://coreon.tw/industries/">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="COREON">
-<meta property="og:title" content="產業解決方案｜COREON 系統模組總覽">
-<meta property="og:description" content="同一套核心引擎，因應每個產業的營運痛點重新配置。看懂 COREON 六大模組如何對應金融融資、補習班、餐飲連鎖等產業。">
+<meta property="og:title" content="產業場景｜COREON 專業服務業營運底座">
+<meta property="og:description" content="從 LegalTech 出發，打造專業服務業的新營運底座。">
 <meta property="og:url" content="https://coreon.tw/industries/">
 <meta property="og:locale" content="zh_TW">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="產業解決方案｜COREON 系統模組總覽">
-<meta name="twitter:description" content="同一套核心引擎，因應每個產業的營運痛點重新配置。">
-
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/brand/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/styles.css">
-
+<link rel="stylesheet" href="/css/coreon-v2.css">
+<style>
+.ind-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+@media(max-width:960px){.ind-full-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.ind-full-grid{grid-template-columns:1fr}}
+.ind-full-grid .ind-app{scroll-margin-top:100px}
+.ind-full-grid .ind-app.featured{grid-column:span 1;position:relative}
+.ind-tag{position:absolute;top:14px;right:14px;font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--accent);color:#fff}
+</style>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://coreon.tw/" },
-    { "@type": "ListItem", "position": 2, "name": "產業解決方案", "item": "https://coreon.tw/industries/" }
-  ]
-}
+{ "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"首頁","item":"https://coreon.tw/"},
+  {"@type":"ListItem","position":2,"name":"產業場景","item":"https://coreon.tw/industries/"}
+]}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "COREON 金融融資管理系統", "url": "https://coreon.tw/solutions/finance-lending/" },
-    { "@type": "ListItem", "position": 2, "name": "COREON 補習班管理系統（即將推出）" },
-    { "@type": "ListItem", "position": 3, "name": "COREON 餐飲／飲料連鎖管理系統（即將推出）" }
-  ]
-}
+{ "@context":"https://schema.org","@type":"ItemList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"COREON 法律服務營運系統"},
+  {"@type":"ListItem","position":2,"name":"COREON 財會與稅務營運系統"},
+  {"@type":"ListItem","position":3,"name":"COREON 顧問服務營運系統"},
+  {"@type":"ListItem","position":4,"name":"COREON 建築與設計營運系統（規劃中）"},
+  {"@type":"ListItem","position":5,"name":"COREON 醫療與健康管理營運系統（規劃中）"}
+]}
 </script>
 </head>
 <body>
 
-<header>
-  <nav class="site-nav" aria-label="主導覽">
-    <a class="nav-brand" href="/">
-      <img class="nav-mark-logo nav-mark-logo--horizontal" src="/images/brand/coreon-horizontal.webp" alt="COREON — Business Operating System">
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="開啟選單">
-      <span></span>
-    </button>
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" aria-label="COREON 首頁"><img class="nav-logo" src="/images/brand/coreon-horizontal.webp" alt="COREON"></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="開啟選單"><span></span></button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="/#why">核心功能</a></li>
-      <li><a href="/solutions/finance-lending/">解決方案</a></li>
-      <li><a href="/industries/" aria-current="page">產業方案</a></li>
-      <li><a href="/about/">關於COREON</a></li>
-      <li><a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-primary glow-hover">預約諮詢</a></li>
+      <li><a href="/understand/">認識 Coreon</a></li>
+      <li><a href="/transform/">重塑營運</a></li>
+      <li><a href="/industries/" aria-current="page">產業場景</a></li>
+      <li><a href="/insights/">案例洞察</a></li>
+      <li><a href="/about/">關於我們</a></li>
+      <li><a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="nav-cta">預約產品體驗</a></li>
     </ul>
-  </nav>
+  </div>
 </header>
 
 <main>
-
-  <!-- HERO -->
-  <section class="hero fade-bottom fade-to-surface" aria-labelledby="hero-heading">
-    <div class="container reveal">
-      <ol class="breadcrumb" style="opacity:0.55;">
-        <li><a href="/">首頁</a></li>
-        <li>產業解決方案</li>
-      </ol>
-      <span class="tag tag-outline">INDUSTRY SOLUTIONS・產業解決方案</span>
-      <h1 id="hero-heading" style="margin-top:var(--space-4);max-width:780px;">
-        同一套核心引擎，<br>因應每個產業的營運痛點<span class="hero-highlight">重新配置</span>。
-      </h1>
-      <p style="font-size:17px;max-width:640px;opacity:0.8;">
-        COREON 不是把同一套系統貼上不同產業的標籤。AI智慧辨識、合約與電子簽署、通路分潤管理、LINE自動化串接、流程自動化、營運報表——六大核心模組依產業需求重新排列組合，長出真正貼近你日常作業的系統。
-      </p>
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <ol class="breadcrumb"><li><a href="/">首頁</a></li><li>產業場景</li></ol>
+      <span class="eyebrow">BUILT FOR PROFESSIONAL SERVICES</span>
+      <h1 style="margin-top:16px;">從 LegalTech 出發，<br>打造專業服務業的新營運底座。</h1>
+      <p class="lede">COREON 第一階段從法律服務產業開始——因為法律工作同時具備高度專業、高文件密度、高流程複雜度，以及高度依賴個人經驗等特性。同一套底層架構，逐步走向其他知識密集型產業。</p>
     </div>
   </section>
 
-  <!-- MODULE × INDUSTRY MATRIX -->
-  <section style="background:var(--color-surface);" aria-labelledby="matrix-heading">
-    <div class="container reveal">
-      <div class="section-intro" style="text-align:left;margin-left:0;">
-        <span class="tag tag-outline">MODULE MAP</span>
-        <h2 id="matrix-heading" style="margin-top:var(--space-3);">模組 × 產業對照表</h2>
-        <p style="opacity:0.7;">同一個模組，在不同產業長出不同的用法。</p>
-      </div>
-      <div class="matrix-table-wrap elev-sm">
-        <table class="matrix-table">
-          <thead>
-            <tr>
-              <th scope="col">核心模組</th>
-              <th scope="col">金融融資</th>
-              <th scope="col">補習班</th>
-              <th scope="col">餐飲／飲料連鎖</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>AI智慧辨識</td><td>貸款／地政文件辨識</td><td>舊生資料匯入</td><td>供應鏈單據辨識</td></tr>
-            <tr><td>合約與電子簽署</td><td>融資合約電子簽署</td><td>招生合約電簽</td><td>加盟合約管理</td></tr>
-            <tr><td>通路分潤管理</td><td>融資通路分潤結算</td><td>招生代理分潤</td><td>加盟店分潤透明化</td></tr>
-            <tr><td>LINE自動化串接</td><td>繳款／進度通知</td><td>家長通知</td><td>會員回訪推播</td></tr>
-            <tr><td>流程自動化</td><td>審核自動指派</td><td>請假補課流程</td><td>排班與庫存自動化</td></tr>
-            <tr><td>營運報表</td><td>案件量／審核率報表</td><td>招生／續班率報表</td><td>多店營運報表整合</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRY CARDS -->
-  <section aria-labelledby="solutions-heading">
-    <div class="container reveal">
-      <div class="section-intro">
-        <span class="tag tag-outline">SOLUTIONS</span>
-        <h2 id="solutions-heading" style="margin-top:var(--space-3);">各產業方案</h2>
-      </div>
-      <div class="grid-3">
-        <article class="industry-card industry-card--featured elev-md glow-hover glow-hover--teal">
-          <span class="tag tag-accent">主力方案</span>
-          <span class="icon-badge icon-badge--on-dark" aria-hidden="true" style="margin-bottom:var(--space-3);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M12 3L3 8h18z"/></svg>
-          </span>
-          <h3 class="card-title">金融融資系統</h3>
-          <p class="card-body">完整的進件、審核、放款與文件管理，打造合規、高效的融資營運流程。</p>
-          <a href="/solutions/finance-lending/" class="industry-link" style="color:var(--color-accent-300);">了解更多 →</a>
+  <section>
+    <div class="wrap">
+      <div class="ind-full-grid reveal">
+        <article class="ind-app glass featured" id="legal" style="position:relative;">
+          <span class="ind-tag">主力發展中</span>
+          <div class="ind-app-top"><span class="dot2"></span>法律服務</div>
+          <div class="ind-app-body">
+            <p>律師事務所、法務顧問、企業法務團隊——案件 × 文件 × 法規 × 工時 × 財務。</p>
+            <div class="ind-row"><span>案件管理</span><span class="v">42 件</span></div>
+            <div class="ind-row"><span>法院期限</span><span class="v">3 筆本週</span></div>
+            <div class="ind-row"><span>法條推薦</span><span class="v">AI</span></div>
+            <div class="ind-row"><span>文件生成</span><span class="v">自動</span></div>
+          </div>
         </article>
-        <article class="industry-card card elev-sm glow-hover">
-          <span class="tag tag-accent">即將登場</span>
-          <span class="icon-badge icon-badge--accent" aria-hidden="true" style="margin-bottom:var(--space-3);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
-          </span>
-          <h3 class="card-title">補習班管理系統</h3>
-          <p class="card-body">課務、學費、家長 LINE 互動整合，讓管理更輕鬆，招生更有效率。</p>
-          <a href="/blog/cram-school-line-notification/" class="industry-link">看LINE通知怎麼設計 →</a>
+        <article class="ind-app glass" id="accounting">
+          <div class="ind-app-top"><span class="dot2"></span>財會與稅務</div>
+          <div class="ind-app-body">
+            <p>會計師事務所、記帳士事務所、財務顧問——客戶 × 憑證 × 申報 × 任務 × 年度流程。</p>
+            <div class="ind-row"><span>客戶帳務</span><span class="v">128 戶</span></div>
+            <div class="ind-row"><span>申報進度</span><span class="v">76%</span></div>
+            <div class="ind-row"><span>應收帳款</span><span class="v">$2.1M</span></div>
+            <div class="ind-row"><span>財務 Dashboard</span><span class="v">即時</span></div>
+          </div>
         </article>
-        <article class="industry-card card elev-sm glow-hover">
-          <span class="tag tag-accent">即將登場</span>
-          <span class="icon-badge icon-badge--accent" aria-hidden="true" style="margin-bottom:var(--space-3);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-          </span>
-          <h3 class="card-title">餐飲／飲料店系統</h3>
-          <p class="card-body">多店舖數據、會員經營，提升營運效率與顧客忠誠度。</p>
-          <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="industry-link">想先了解？聊聊需求 →</a>
+        <article class="ind-app glass" id="consulting">
+          <div class="ind-app-top"><span class="dot2"></span>顧問服務</div>
+          <div class="ind-app-body">
+            <p>管理顧問、品牌顧問、財務／企業顧問——商機 × 專案 × 交付 × 知識 × 收費。</p>
+            <div class="ind-row"><span>Project</span><span class="v">18 案</span></div>
+            <div class="ind-row"><span>Milestone</span><span class="v">5 本月</span></div>
+            <div class="ind-row"><span>Consultant Utilization</span><span class="v">82%</span></div>
+            <div class="ind-row"><span>Revenue</span><span class="v">$4.6M</span></div>
+          </div>
+        </article>
+        <article class="ind-app glass ind-more" id="architecture">
+          <p><b>建築與設計</b><br>建築事務所、室內設計、工程顧問<br>客戶 × 專案 × 圖面 × 進度 × 成本</p>
+          <span class="pill pill-soon">規劃中</span>
+        </article>
+        <article class="ind-app glass ind-more" id="healthcare">
+          <p><b>醫療與健康管理</b><br>診所、健康管理機構、醫療服務團隊<br>客戶 × 療程 × 排程 × 文件 × 營運</p>
+          <span class="pill pill-soon">規劃中</span>
+        </article>
+        <article class="ind-app glass ind-more" id="others">
+          <p><b>其他專業服務</b><br>只要依靠專業人才創造價值、擁有複雜工作流程、需要大量文件與資訊協作，COREON 就有機會成為你的營運底座。</p>
+          <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">聊聊你的產業 →</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- BOTTOM CTA -->
-  <section class="cta-section section-on-dark" aria-labelledby="cta-heading">
-    <div class="container">
-      <div class="cta-inner reveal" style="max-width:640px;">
-        <h2 id="cta-heading">還沒看到你的產業？</h2>
-        <p style="opacity:0.8;">COREON 的核心模組本來就是為了跨產業重組而設計。告訴我們你的產業與痛點，我們一起看看怎麼配置。</p>
-        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">
-          <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-primary glow-hover">加入官方 LINE 聊聊</a>
-          <a href="/solutions/finance-lending/" class="btn btn-on-dark glow-hover">先看旗艦方案</a>
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-final reveal">
+        <span class="eyebrow">還沒看到你的產業？</span>
+        <h2 style="margin-top:14px;">COREON 的核心架構本來就是為了跨產業重組而設計。</h2>
+        <p>告訴我們你的產業與工作方式，一起看看怎麼配置。</p>
+        <div class="btns">
+          <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-primary">加入官方 LINE 聊聊</a>
+          <a href="/transform/" class="btn btn-ghost">看重塑營運方法</a>
         </div>
       </div>
-
-      <div class="site-footer">
-        <span class="nav-brand" style="color:#fff;">
-          <img class="nav-mark-logo" src="/images/brand/coreon-mark.webp" alt="COREON 商標" width="100" height="57">
-          <span class="visually-hidden">COREON</span>
-        </span>
-        <ul class="footer-legal">
-          <li><a href="mailto:coreon.tw@gmail.com">coreon.tw@gmail.com</a></li>
-          <li><a href="/privacy-policy">隱私權政策</a></li>
-          <li><a href="/terms">服務條款</a></li>
-        </ul>
-        <span class="footer-copy">© 2026 COREON Systems. All rights reserved. 威迪數位廣告科技旗下專屬企業解決方案品牌。</span>
-      </div>
     </div>
   </section>
-
 </main>
 
-<script src="/js/main.js"></script>
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">COREON</div>
+    <p class="foot-tag">Professional Service Operating System<br>不只管理工作，重新設計工作如何發生。</p>
+    <ul class="foot-legal">
+      <li><a href="mailto:coreon.tw@gmail.com">coreon.tw@gmail.com</a></li>
+      <li><a href="/privacy-policy">隱私權政策</a></li>
+      <li><a href="/terms">服務條款</a></li>
+    </ul>
+    <p class="foot-copy">© 2026 COREON Systems. All rights reserved. 威迪數位廣告科技旗下專屬企業解決方案品牌。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle) toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion:reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 </body>
 </html>
