@@ -44,6 +44,7 @@
 | 金融融資管理系統（旗艦方案） | `/solutions/finance-lending/` | ✅ 完成（文案來自使用者提供的 RTF） |
 | 產業方案總覽 | `/industries/` | ✅ 完成（2026-08-02，含模組×產業對照表，補習班/餐飲飲料連鎖卡片先導向 LINE，無死連結） |
 | 關於 COREON | `/about/` | ✅ 完成（2026-08-02，文案取自 `page_關於我們.rtf`，用 textutil 轉出正確文字後建置） |
+| 部落格：補習班LINE通知系統 | `/blog/cram-school-line-notification/` | ✅ 完成（2026-08-13，長尾差異化知識文，原排Sprint3提前製作；首頁與/industries/的補習班卡片已改連過來） |
 | 常見問題 | `/faq` | ⬜ 待做 |
 | 聯絡我們 | `/contact` | ⬜ 待做 |
 | 隱私權政策 | `/privacy-policy` | ⬜ 待做 |
