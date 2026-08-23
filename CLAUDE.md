@@ -45,14 +45,16 @@
 |---|---|---|
 | 首頁 | `/` | ✅ 完成（Professional Service Operating System定位，已迭代3版） |
 | 認識 Coreon | `/understand/` | ✅ 完成（9個子主題錨點卡片） |
-| 重塑營運 | `/transform/` | ✅ 完成（含Workflow流程圖、BPR Before/After、4步驟導入方法） |
+| 重塑營運 | `/transform/` | ✅ 完成（**2026-08-23 晚間整頁重做**，11個Section：Hero舊流程→新流程、五大營運摩擦01-05、BPR提問區、COREON Method四階段、AS-IS/TO-BE拖曳比較、三層架構深色區、人／系統分工、標準化不僵化、營運可視化儀表板、Before/After價值對照、流程診斷CTA。**這頁不吃 `css/coreon-v2.css`，改用頁內 `<style>`+`<script>`**，跟新版首頁同樣做法） |
 | 產業場景 | `/industries/` | ✅ 完成（2026-08-23全部重寫：法律/財會/顧問已上線內容，建築設計/醫療健康/其他標「規劃中」） |
 | 案例洞察 | `/insights/` | ✅ 完成（FAQ已有6題真實內容+FAQPage schema；客戶案例/Before-After/產業洞察/流程指南誠實標「內容籌備中」，沒有編造假案例） |
+| 關於我們 | `/about/` | ✅ 完成（2026-08-23重寫：10-section敘事版，60%故事/25%系統視覺/15%產品UI，含CORE+ON呼應、深色Vision區塊、6步驟BPR cascade） |
+
+> **2026-08-23（晚）`/transform/` 改版重要教訓**：第一版試作把「五大營運摩擦 01-05」和「COREON Method 01-04」做成 sticky scroll（捲動時畫面固定、內容原地切換），使用者實測回饋**「滑動很卡、像當機」**，已全部拆掉——摩擦點改成一般文件流的大數字清單（01-05 逐列＋hairline 分隔線），Method 改成四列 row（左邊文字、右邊該階段狀態圖 SCATTERED→REORDERED→CONNECTED→IN FLOW）。**結論：這個站不要再用 sticky scroll／scroll-hijack 的區塊，捲動一律保持自然。**
 
 ### 舊架構殘留（nav已指向新5頁籤，但內容/視覺還是舊系統，未遷移）
 | 頁面 | 網址 | 狀態 |
 |---|---|---|
-| 關於 COREON | `/about/` | ⚠️ 內容仍是舊定位（金融融資/教育/餐飲），nav已更新但頁面本身待重寫 |
 | 金融融資管理系統 | `/solutions/finance-lending/` | 🚩 孤兒頁面——主題不在新5產業分類裡，nav已移除連結，需使用者決定保留/改寫/下架 |
 | 部落格：補習班LINE通知系統 | `/blog/cram-school-line-notification/` | 🚩 孤兒頁面——同上，暫掛在`/insights/`並標註「較早期定位」，需使用者決定 |
 | 常見問題（舊版`/faq`規劃） | — | 已被新架構的 `/insights/#faq-list` 取代，不用再另外做 |
