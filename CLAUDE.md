@@ -3,6 +3,8 @@
 > 這份檔案是這個專案的「活文件」——每次有重大進度或決議都要回來更新，
 > 這樣不管誰（或哪個 AI session）接手，都能從這份檔案掌握完整現況，不用重新問一輪。
 
+> ⚠️ **2026-08-23 重大轉向**：COREON 從「金融融資/補習班/餐飲/飲料連鎖產業ERP」改為「Professional Service Operating System」（服務法律/財會稅務/顧問/建築設計/醫療健康管理）。`index.html` 首頁已依新定位重建（獨立`<style>`/`<script>`，不吃共用`css/styles.css`／`js/main.js`）。**下面「專案概況」「品牌資訊」「視覺風格」「頁面進度」都還是舊定位寫的，只有首頁那列例外**，其餘頁面(about/industries/solutions/finance-lending/blog)都還是舊版外觀與文案，尚未跟進，細節見 `../../EXECUTION_MEMO.md` 決策日誌。
+
 ## 專案概況
 - **品牌**：COREON — 產業特化型 ERP／數位轉型解決方案（母公司：威迪數位廣告科技）
 - **正式網域**：https://coreon.tw （已綁定，www.coreon.tw 會 301 轉址到 coreon.tw）
