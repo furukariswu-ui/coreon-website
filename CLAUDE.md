@@ -3,7 +3,7 @@
 > 這份檔案是這個專案的「活文件」——每次有重大進度或決議都要回來更新，
 > 這樣不管誰（或哪個 AI session）接手，都能從這份檔案掌握完整現況，不用重新問一輪。
 
-> ⚠️ **2026-08-23 重大轉向**：COREON 從「金融融資/補習班/餐飲/飲料連鎖產業ERP」改為「Professional Service Operating System」（服務法律/財會稅務/顧問/建築設計/醫療健康管理）。`index.html` 首頁已依新定位重建（獨立`<style>`/`<script>`，不吃共用`css/styles.css`／`js/main.js`）。**下面「專案概況」「品牌資訊」「視覺風格」「頁面進度」都還是舊定位寫的，只有首頁那列例外**，其餘頁面(about/industries/solutions/finance-lending/blog)都還是舊版外觀與文案，尚未跟進，細節見 `../../EXECUTION_MEMO.md` 決策日誌。
+> ⚠️ **2026-08-23 重大轉向＋架構重整**：COREON 從「金融融資/補習班/餐飲/飲料連鎖產業ERP」改為「Professional Service Operating System」（服務法律/財會稅務/顧問/建築設計/醫療健康管理）。同日站台架構也大改版，新的5個最上層頁籤：**認識Coreon**(`/understand/`)、**重塑營運**(`/transform/`)、**產業場景**(`/industries/`，內容已改寫成新5產業)、**案例洞察**(`/insights/`)、**關於我們**(`/about/`，URL不變但內容還沒更新)。這5個頁面（`index.html`／`understand/`／`transform/`／`insights/`／`industries/`）共用新的 `css/coreon-v2.css`（暖米`#F8F5EF`+橘`#F36B21`+Inter/Noto Sans TC），跟舊版`css/styles.css`是兩套系統。**`/about/`、`/solutions/finance-lending/`、`/blog/cram-school-line-notification/` 這三頁只更新了nav連結文字（指向新5頁籤），內容跟視覺都還是舊系統，尚未遷移。`/solutions/finance-lending/`（金融融資）、部落格的補習班文章，主題完全不在新的5產業分類裡，等於是孤兒頁面——nav已經不連到finance-lending了（產業不對應，拿掉了），部落格文章還留在`/insights/`裡但標註「較早期定位、跟現在主軸不完全一致」。這兩個孤兒頁面要保留/改寫/下架，需要使用者決定，不要自己處理。** 細節見 `../../EXECUTION_MEMO.md` 決策日誌。
 
 ## 專案概況
 - **品牌**：COREON — 產業特化型 ERP／數位轉型解決方案（母公司：威迪數位廣告科技）
@@ -40,17 +40,23 @@
 - `mark_src.png`、`lockup_src.png` 是處理過程的中間檔，沒有被網頁引用，可以手動刪掉（環境權限問題我這邊刪不掉）
 
 ## 頁面進度
+### 新架構（2026-08-23起，5大頁籤，用 css/coreon-v2.css）
 | 頁面 | 網址 | 狀態 |
 |---|---|---|
-| 首頁 | `/` | ✅ 完成 |
-| 金融融資管理系統（旗艦方案） | `/solutions/finance-lending/` | ✅ 完成（文案來自使用者提供的 RTF） |
-| 產業方案總覽 | `/industries/` | ✅ 完成（2026-08-02，含模組×產業對照表，補習班/餐飲飲料連鎖卡片先導向 LINE，無死連結） |
-| 關於 COREON | `/about/` | ✅ 完成（2026-08-02，文案取自 `page_關於我們.rtf`，用 textutil 轉出正確文字後建置） |
-| 部落格：補習班LINE通知系統 | `/blog/cram-school-line-notification/` | ✅ 完成（2026-08-13，長尾差異化知識文，原排Sprint3提前製作；首頁與/industries/的補習班卡片已改連過來） |
-| 常見問題 | `/faq` | ⬜ 待做 |
-| 聯絡我們 | `/contact` | ⬜ 待做 |
-| 隱私權政策 | `/privacy-policy` | ⬜ 待做 |
-| 服務條款 | `/terms` | ⬜ 待做 |
+| 首頁 | `/` | ✅ 完成（Professional Service Operating System定位，已迭代3版） |
+| 認識 Coreon | `/understand/` | ✅ 完成（9個子主題錨點卡片） |
+| 重塑營運 | `/transform/` | ✅ 完成（含Workflow流程圖、BPR Before/After、4步驟導入方法） |
+| 產業場景 | `/industries/` | ✅ 完成（2026-08-23全部重寫：法律/財會/顧問已上線內容，建築設計/醫療健康/其他標「規劃中」） |
+| 案例洞察 | `/insights/` | ✅ 完成（FAQ已有6題真實內容+FAQPage schema；客戶案例/Before-After/產業洞察/流程指南誠實標「內容籌備中」，沒有編造假案例） |
+
+### 舊架構殘留（nav已指向新5頁籤，但內容/視覺還是舊系統，未遷移）
+| 頁面 | 網址 | 狀態 |
+|---|---|---|
+| 關於 COREON | `/about/` | ⚠️ 內容仍是舊定位（金融融資/教育/餐飲），nav已更新但頁面本身待重寫 |
+| 金融融資管理系統 | `/solutions/finance-lending/` | 🚩 孤兒頁面——主題不在新5產業分類裡，nav已移除連結，需使用者決定保留/改寫/下架 |
+| 部落格：補習班LINE通知系統 | `/blog/cram-school-line-notification/` | 🚩 孤兒頁面——同上，暫掛在`/insights/`並標註「較早期定位」，需使用者決定 |
+| 常見問題（舊版`/faq`規劃） | — | 已被新架構的 `/insights/#faq-list` 取代，不用再另外做 |
+| 聯絡我們／隱私權政策／服務條款 | `/contact` `/privacy-policy` `/terms` | ⬜ 待做（新舊架構都還沒有） |
 
 > 2026-08-02 補充：nav 的「產業方案」已從 `#industries`/`/#industries` 錨點改成正式頁面 `/industries/`，並新增「關於COREON」nav項目指向 `/about/`（依本文件第52-55行的 SOP 執行）。首頁自己的 `#industries` 區塊內容保留，只是 nav 不再指過去。
 > SEO/GEO 全站關鍵字與內容策略、執行進度見上一層 `../策略進度/`（`SEO_GEO策略與模組產業切入規劃.md` + `進度追蹤.md`）。發佈前先看 `進度追蹤.md` 確認本機/線上落差。
