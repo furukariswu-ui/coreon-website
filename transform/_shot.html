@@ -387,7 +387,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px;background:var(--bg-
 
 <header class="nav">
   <div class="nav-in">
-    <a href="/" aria-label="COREON 首頁"><img class="nav-logo" src="/images/brand/coreon-horizontal.webp" alt="COREON"></a>
+    <a href="/" aria-label="COREON 首頁"><img class="nav-logo" src="../images/brand/coreon-horizontal.webp" alt="COREON"></a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="開啟選單"><span></span></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="/understand/">認識 Coreon</a></li>
@@ -1051,5 +1051,30 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px;background:var(--bg-
   }
 })();
 </script>
+<script>
+(function(){var h=location.hash.slice(1);if(!h)return;
+var p={};h.split('&').forEach(function(kv){var a=kv.split('=');p[a[0]]=a[1];});
+function apply(){
+  document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});
+  var ls=document.getElementById('lstack'); if(ls){ls.classList.add('in');document.querySelectorAll('.ldesc .item').forEach(function(i){i.classList.add('on');});}
+  document.querySelectorAll('.wfn').forEach(function(n){n.classList.add('ask');});
+  document.querySelectorAll('.bar .t i').forEach(function(i){i.style.width=i.dataset.w+'%';});
+  if(p.stage){var idx=+p.stage;
+    var mod=document.getElementById(p.mod||'frictionMod');
+    var sel=(p.mod==='methodMod')?'.mitem':'.sitem';
+    mod.querySelectorAll(sel).forEach(function(el,n){el.classList.toggle('on',n===idx);});
+    mod.querySelectorAll('.srail i').forEach(function(el,n){el.classList.toggle('on',n===idx);});
+    var d=document.getElementById('diag'); if(d&&p.mod==='methodMod'){d.setAttribute('data-stage',String(idx+1));}
+  }
+  if(window.__t===undefined){var t=0;
+    if(p.el){var e=document.getElementById(p.el); if(e) t=e.getBoundingClientRect().top+window.scrollY;}
+    t+=(+p.d||0); if(p.y)t=+p.y; window.__t=t;}
+  document.body.style.marginTop=(-window.__t)+'px';
+}
+window.addEventListener('load',function(){setTimeout(apply,120);setTimeout(apply,700);});
+})();
+</script>
 </body>
+</html>
+
 </html>
