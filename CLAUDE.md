@@ -33,11 +33,12 @@
 - 詳細 design token／component class 都在 `css/styles.css`，有寫註解
 
 ## 品牌素材（已取得，位於 `images/brand/`）
-- `coreon-mark.webp` — 商標圖示（六角形 C+O），去背，導覽列早期版本／頁尾使用
-- `coreon-horizontal.webp` — 圖示＋COREON＋標語橫式組合，**目前導覽列使用這個**
-- `coreon-lockup.webp` — 圖示＋COREON＋標語直式堆疊
-- `favicon.ico` / `favicon-32x32.png` / `favicon-16x16.png` / `apple-touch-icon.png` — 瀏覽器分頁圖示
-- `mark_src.png`、`lockup_src.png` 是處理過程的中間檔，沒有被網頁引用，可以手動刪掉（環境權限問題我這邊刪不掉）
+> **2026-08-23 換新版 logo**：黑＋金分子節點風格圖示（圓弧C＋4顆金球節點連線）＋COREON字標（E中間橫槓金色），取代原本六角形C+O圖示。使用者提供單一橫式組合檔（`圖片/logo/coreon logo.png`，2172×724），我用Pillow去背＋裁切出圖示單獨版，全站共用檔名（`coreon-horizontal.webp`／`coreon-mark.webp`等）原地覆蓋，**沒有改動任何HTML**，新舊架構頁面、連同並行session負責的`/transform/`（用到`coreon-lockup.webp`當og:image）都自動吃到新版。
+- `coreon-mark.webp` / `coreon-mark@2x.webp` — 商標圖示單獨版，去背，導覽列早期版本／頁尾使用
+- `coreon-horizontal.webp` / `coreon-horizontal@2x.webp` — 圖示＋COREON橫式組合，**目前導覽列使用這個**
+- `coreon-lockup.webp` — 圖示＋COREON置中組合（暖米底），給 og:image／social share 用（`/transform/`引用中）
+- `favicon.ico`（16/32/48/64四合一）/ `favicon-32x32.png` / `favicon-16x16.png` / `apple-touch-icon.png` — 瀏覽器分頁圖示，都已換新版圖示
+- `mark_src.png`、`lockup_src.png` 是**新版logo的高解析度去背母檔**（圖示單獨版/完整橫式版），之後要重新裁切/調整尺寸就從這兩個檔案出發，不要用原始的`圖片/logo/coreon logo.png`重跑（那份沒去背）
 
 ## 頁面進度
 ### 新架構（2026-08-23起，5大頁籤，用 css/coreon-v2.css）
@@ -46,7 +47,7 @@
 | 首頁 | `/` | ✅ 完成（Professional Service Operating System定位，已迭代3版） |
 | 認識 Coreon | `/understand/` | ✅ 完成（9個子主題錨點卡片） |
 | 重塑營運 | `/transform/` | ✅ 完成（**2026-08-23 晚間整頁重做**，11個Section：Hero舊流程→新流程、五大營運摩擦01-05、BPR提問區、COREON Method四階段、AS-IS/TO-BE拖曳比較、三層架構深色區、人／系統分工、標準化不僵化、營運可視化儀表板、Before/After價值對照、流程診斷CTA。**這頁不吃 `css/coreon-v2.css`，改用頁內 `<style>`+`<script>`**，跟新版首頁同樣做法） |
-| 產業場景 | `/industries/` | ✅ 完成（2026-08-23全部重寫：法律/財會/顧問已上線內容，建築設計/醫療健康/其他標「規劃中」） |
+| 產業場景 | `/industries/` | ✅ 完成（**2026-08-23晚間再次整頁重做**成「短、視覺化、分流用」的Hub頁，不是內容頁：Hero用Core+3產業Layer視覺、Generic vs Coreon對照、8節點Operating Core架構圖、**3個滿寬Editorial Panel（法律/會計/顧問，左右交替排列，這是本頁核心轉換區）**、Industry≠Template說明、More Industries文字列表(Legal/Accounting/Consulting已上線，Architecture/Professional Services/Real Estate Services規劃中)、CTA。3個Panel的CTA暫連到LINE，因為`/industries/legal/`等產業detail page還沒建（brief本身也說「未來再慢慢增加」，這輪沒做）。用`css/coreon-v2.css`共用樣式。） |
 | 案例洞察 | `/insights/` | ✅ 完成（FAQ已有6題真實內容+FAQPage schema；客戶案例/Before-After/產業洞察/流程指南誠實標「內容籌備中」，沒有編造假案例） |
 | 關於我們 | `/about/` | ✅ 完成（2026-08-23重寫：10-section敘事版，60%故事/25%系統視覺/15%產品UI，含CORE+ON呼應、深色Vision區塊、6步驟BPR cascade） |
 
@@ -74,6 +75,7 @@
 - JSON-LD（首頁用 Organization，方案頁用 Product + BreadcrumbList，未來 FAQ 頁用 FAQPage）
 - 語意化 HTML、`sitemap.xml`、`robots.txt`
 - 圖片一律 WebP，檔名語意化英文，alt 用中文；`images/` 依頁面 slug 分資料夾（`images/home/`、`images/solutions-finance-lending/` 等，已建好空資料夾）
+  - **2026-08-23 更新**：先前記錄過「本機 `sips` 無法輸出 WebP」的限制已解決——這台機器有裝 `python3` + Pillow（`pip` 套件，`python3 -c "from PIL import features; features.check('webp')"` 回傳 True），可以用 Pillow 直接做去背／裁切／resize／輸出 WebP／輸出多尺寸 ico，不用再手動用線上工具轉檔或退回存 PNG。之後有新圖片素材要處理，直接寫 Python/Pillow script 處理即可。
 - **GA4 追蹤碼**（2026-08-02新增）：`<head>` 裡 viewport meta 後面要貼 gtag.js snippet，評估ID固定用 `G-TXDZ6K7RPB`，範本見 `index.html` 或任一既有頁面。新頁面上線前檢查有沒有漏貼。加強型評估（頁面瀏覽/捲動/外連點擊/表單互動等）已在GA4後台開啟，LINE點擊跟表單送出的轉換追蹤靠這個自動涵蓋，不用額外寫自訂事件。
 
 ## 部署與發佈流程（重要，之後每次更新都要照這個走）
