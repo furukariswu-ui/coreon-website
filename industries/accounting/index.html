@@ -63,6 +63,10 @@
 
 .feature{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
 .feature.flip .feat-text{order:2}
+.split-hero{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:center}
+@media(max-width:860px){.split-hero{grid-template-columns:1fr;gap:30px}}
+.split-panel{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+@media(max-width:860px){.split-panel{grid-template-columns:1fr}}
 .feat-list{margin-top:22px;display:flex;flex-direction:column;gap:13px}
 .feat-list .li{display:flex;gap:11px;font-size:14.5px;color:var(--ink-soft);line-height:1.7}
 .feat-list .li b{color:var(--ink);font-weight:700}
@@ -190,6 +194,111 @@
 .todo-row .tag{font-size:10.5px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--paper-warm);color:var(--paper-soft);flex:none;white-space:nowrap}
 .todo-row .tx{font-size:13px;color:var(--paper-ink)}
 .todo-row .amt{margin-left:auto;font-family:var(--mono);font-weight:700;font-size:13px;color:var(--accent);flex:none;white-space:nowrap}
+
+/* ── Client 360 detail components ── */
+/* disconnected sources diagram */
+.disperse-wrap{position:relative;min-height:300px;display:flex;align-items:center;justify-content:center}
+.disperse-core{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 32% 28%,var(--accent-2),var(--accent) 78%);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;text-align:center;line-height:1.4;box-shadow:0 26px 48px -14px var(--accent-glow);z-index:2}
+.disperse-node{position:absolute;transform:translate(-50%,-50%);font-size:12.5px;font-weight:700;color:var(--ink-soft);
+  background:var(--bg-white);border:1px solid var(--line);padding:9px 15px;border-radius:11px;z-index:2;white-space:nowrap}
+.disperse-svg{position:absolute;inset:0;z-index:1}
+@media(max-width:640px){.disperse-wrap{min-height:340px}.disperse-node{font-size:11px;padding:7px 11px}}
+
+/* workspace shell (sidebar + overview grid) */
+.ws-shell{display:grid;grid-template-columns:190px 1fr}
+.ws-side{background:var(--paper-warm);border-right:1px solid var(--paper-hair);padding:16px 14px}
+.ws-side .cl{font-size:12.5px;font-weight:700;color:var(--paper-ink);padding:6px 8px 14px}
+.ws-side a{display:block;font-size:11.5px;color:var(--paper-soft);padding:7px 8px;border-radius:8px;margin-bottom:1px}
+.ws-side a.on{background:var(--accent);color:#fff;font-weight:700}
+.ws-main{padding:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.ws-card{background:var(--paper);border:1px solid var(--paper-hair);border-radius:12px;padding:14px}
+.ws-card .wk{font-size:9.5px;color:var(--paper-faint);font-weight:700;letter-spacing:.04em}
+.ws-card .wv{margin-top:7px;font-family:var(--mono);font-weight:800;font-size:19px;color:var(--paper-ink)}
+.ws-card .wd{margin-top:4px;font-size:10.5px;color:var(--paper-soft)}
+@media(max-width:760px){.ws-shell{grid-template-columns:1fr}.ws-side{display:none}.ws-main{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ws-main{grid-template-columns:1fr}}
+
+/* linear progress timeline */
+.lprog{display:flex;align-items:flex-start;justify-content:space-between;position:relative;padding:6px 4px 0}
+.lprog::before{content:"";position:absolute;top:13px;left:4%;right:4%;height:1px;background:var(--paper-hair)}
+.lprog-node{position:relative;display:flex;flex-direction:column;align-items:center;gap:9px;flex:1;text-align:center}
+.lprog-dot{width:15px;height:15px;border-radius:50%;background:var(--paper);border:2px solid var(--paper-hair);z-index:1}
+.lprog-node.done .lprog-dot{background:#2e9e5b;border-color:#2e9e5b}
+.lprog-node.now .lprog-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-glow)}
+.lprog-lb{font-size:10.5px;color:var(--paper-soft);font-weight:600;line-height:1.4}
+.lprog-node.now .lprog-lb{color:var(--accent);font-weight:700}
+@media(max-width:700px){.lprog{flex-wrap:wrap;gap:16px 0}.lprog::before{display:none}.lprog-node{flex:1 1 30%}}
+
+/* attention rows v2 */
+.attn-card{background:var(--paper);border-radius:14px;overflow:hidden}
+.attn-row{display:flex;align-items:center;gap:12px;padding:15px 16px;border-bottom:1px solid var(--paper-hair);border-left:3px solid transparent}
+.attn-row:last-child{border-bottom:0}
+.attn-row.c-red{border-left-color:#d2543c}
+.attn-row.c-yellow{border-left-color:var(--accent)}
+.attn-row.c-blue{border-left-color:#3a5b86}
+.attn-row .adot{font-size:14px;flex:none}
+.attn-row .abody{flex:1;min-width:0}
+.attn-row .atag{font-size:10px;font-weight:700;color:var(--paper-faint);text-transform:uppercase;letter-spacing:.03em}
+.attn-row .atx{margin-top:2px;font-size:13px;color:var(--paper-ink);font-weight:600}
+.attn-row .alink{font-size:11.5px;font-weight:700;color:var(--accent);flex:none;white-space:nowrap}
+
+/* portal mockup */
+.portal-shot{max-width:330px;margin:0 auto;background:var(--paper);border-radius:22px;border:1px solid var(--paper-hair);
+  box-shadow:0 30px 70px -24px rgba(24,23,21,.22);overflow:hidden}
+.portal-top{background:linear-gradient(150deg,var(--accent),var(--accent-2));padding:22px 20px;color:#fff}
+.portal-top .pg{font-size:11px;opacity:.85}
+.portal-top .pn{margin-top:4px;font-size:16px;font-weight:800}
+.portal-bar{margin-top:9px;height:7px;border-radius:99px;background:rgba(255,255,255,.3);overflow:hidden}
+.portal-bar i{display:block;height:100%;background:#fff;border-radius:99px}
+.portal-body{padding:18px 20px}
+.portal-todo{background:var(--paper-warm);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.portal-todo:last-child{margin-bottom:0}
+
+/* history timeline */
+.htl{display:flex;flex-direction:column;gap:0;max-width:600px;margin:0 auto}
+.htl-row{display:grid;grid-template-columns:74px 20px 1fr;gap:0;padding:13px 0}
+.htl-date{font-family:var(--mono);font-size:11.5px;color:var(--ink-muted);padding-top:1px}
+.htl-mark{display:flex;justify-content:center;position:relative}
+.htl-mark::before{content:"";position:absolute;top:18px;bottom:-13px;width:1px;background:var(--line)}
+.htl-row:last-child .htl-mark::before{display:none}
+.htl-dot{width:9px;height:9px;border-radius:50%;background:var(--ink-muted);margin-top:4px}
+.htl-row.done .htl-dot{background:#2e9e5b}
+.htl-row.sys .htl-dot{background:var(--accent)}
+.htl-tx{font-size:13.5px;color:var(--ink);line-height:1.6}
+.htl-tx .who{color:var(--ink-muted);font-size:12px}
+
+/* health v2 */
+.health2-grid{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.health2-card{border-radius:18px;padding:24px;border:1px solid var(--line);background:var(--bg-white)}
+.health2-card.risk{background:#FBEEEA;border-color:#EFC2B0}
+.health2-top{display:flex;justify-content:space-between;align-items:baseline}
+.health2-name{font-weight:800;font-size:15px}
+.health2-score{font-family:var(--mono);font-weight:800;font-size:22px;color:#2e9e5b}
+.health2-card.risk .health2-score{color:#c0432c}
+.health2-mgrid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.health2-m{background:var(--bg-sand);border-radius:10px;padding:10px 12px}
+.health2-card.risk .health2-m{background:rgba(255,255,255,.55)}
+.health2-m .ml{font-size:10.5px;color:var(--ink-muted)}
+.health2-m .mv{margin-top:3px;font-family:var(--mono);font-weight:700;font-size:14px}
+.health2-alert{margin-top:14px;font-size:11.5px;font-weight:700;color:#a63a27;background:rgba(255,255,255,.6);padding:8px 12px;border-radius:8px}
+.health2-list{margin-top:10px;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.health2-list li{font-size:12px;color:#8a3d2d;padding-left:14px;position:relative}
+.health2-list li::before{content:"•";position:absolute;left:0}
+@media(max-width:700px){.health2-grid{grid-template-columns:1fr}}
+
+/* architecture diagram */
+.arch-wrap{position:relative;max-width:560px;margin:52px auto 0;min-height:440px}
+.arch-wrap::before{content:"";position:absolute;inset:-8%;background:radial-gradient(circle at 50% 50%,var(--accent-glow),transparent 65%);filter:blur(20px)}
+.arch-core{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:112px;height:112px;border-radius:50%;
+  background:radial-gradient(circle at 32% 28%,var(--accent-2),var(--accent) 78%);display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:13px;text-align:center;box-shadow:0 26px 48px -14px var(--accent-glow);z-index:2}
+.arch-node{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.arch-node span{padding:8px 14px;border-radius:999px;font-size:11.5px;font-weight:700;background:var(--bg-white);border:1px solid var(--line);color:var(--ink-soft);white-space:nowrap}
+.arch-svg{position:absolute;inset:0;z-index:1}
+.arch-base{margin-top:16px;text-align:center;padding:18px;border-radius:14px;background:#241F1A;color:#EFE9DD}
+.arch-base .al{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--accent-2);font-weight:700}
+.arch-base .av{margin-top:8px;font-size:12px;color:#C9C0AF}
 </style>
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -749,48 +858,39 @@
     </div>
   </section>
 
-  <!-- ══════════ CLIENT 360 PILLAR ══════════ -->
+  <!-- ══════════ CLIENT 360 PILLAR (12-section detail) ══════════ -->
 
-  <!-- CLIENT 360 INTRO -->
-  <section class="acc-dark">
-    <div class="wrap">
-      <div class="h2-block center reveal">
-        <span class="eyebrow">COREON CLIENT 360 · 客戶全週期管理中心</span>
-        <h2 style="margin-top:14px;">客戶現在做到哪裡、還缺什麼、<br>下一個期限是什麼——一頁掌握。</h2>
-      </div>
-      <div class="story center reveal" style="margin-top:20px;">
-        <p>會計師事務所管理的，不只是客戶基本資料，而是這個客戶現在正在發生什麼事：帳務進度、稅務申報、是否已繳稅、有哪些待辦、下一個重要期限。Coreon 不把「繳稅進度」做成獨立功能，而是直接整合進每一位客戶的完整管理頁面。</p>
-      </div>
-      <p class="big-statement center reveal" style="margin-top:32px;color:#fff;">一個客戶，一個營運視角。<br><span style="font-size:15px;font-weight:500;color:#C9C0AF;">從收件、帳務、申報到繳稅，全部集中管理。</span></p>
-    </div>
-  </section>
-
-  <!-- FEATURE: Client Overview -->
-  <section>
-    <div class="wrap">
-      <div class="feature">
-        <div class="feat-text reveal">
-          <span class="eyebrow">ONE CLIENT, ONE VIEW</span>
-          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">打開一個客戶，<br>就看到完整狀態。</h2>
-          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">進入 ABC 科技的客戶頁面，會計人員可以直接看到基本資訊、本期帳務進度、稅務申報進度、繳稅進度、待辦事項與重要期限——不需要再切換 CRM、Excel、LINE、Email、稅務表格與工作清單。</p>
+  <!-- 01 · CLIENT 360 HERO -->
+  <section id="client360" style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap split-hero">
+      <div class="reveal">
+        <span class="eyebrow">COREON CLIENT 360</span>
+        <h2 style="margin-top:14px;font-size:clamp(28px,3.6vw,40px);">每一位客戶，<br>都有一個完整的營運視角。</h2>
+        <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.8;">從資料收件、帳務處理、稅務申報到繳稅追蹤，Coreon 將分散在不同人、不同工具與不同時間點的工作，整合進同一個客戶中心。</p>
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-primary">預約產品展示 →</a>
+          <a href="#dual-track" class="btn btn-ghost">了解會計事務所解決方案</a>
         </div>
-        <div class="feat-shot reveal">
-          <div class="frame">
-            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">Client 360 · ABC 科技</span></div>
-            <div style="padding:16px 18px">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
-                <div style="font-size:15px;font-weight:700;">ABC 科技</div>
-                <span class="mpill mpill-ok">合作中</span>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:8px;">
-                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>本期資料</span><span class="tnum" style="font-weight:700;">92% 已收齊</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>帳務</span><span class="mpill mpill-ok">已完成</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>稅務申報</span><span class="mpill mpill-ok">已申報</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>繳稅</span><span class="mpill mpill-warn">待客戶完成</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;"><span>下一期限</span><span class="tnum" style="font-weight:700;color:var(--accent);">09/15</span></div>
-              </div>
-              <div style="margin-top:10px"><span class="mpill mpill-err">異常：缺 2 張紙本正本</span></div>
-              <div style="margin-top:10px;font-size:11px;color:var(--paper-faint);">主管一眼就知道：這個客戶不是還沒做完帳，而是現在卡在「等待客戶繳稅」。</div>
+      </div>
+      <div class="reveal">
+        <div class="frame">
+          <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">Client 360 · ABC 科技股份有限公司</span></div>
+          <div style="padding:20px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;">
+              <div><div style="font-size:15.5px;font-weight:700;">ABC 科技股份有限公司</div><div style="font-size:11px;color:var(--paper-faint);margin-top:3px;">統編 12345678 · 主辦：王會計</div></div>
+              <span class="mpill mpill-ok">合作中</span>
+            </div>
+            <div style="margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:11.5px;color:var(--paper-soft);">本期整體進度</span><span class="tnum" style="font-weight:800;font-size:17px;">78%</span></div>
+            <div style="margin-top:7px;height:7px;border-radius:99px;background:var(--paper-hair);overflow:hidden;"><div style="width:78%;height:100%;background:var(--accent);"></div></div>
+            <div style="margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;">
+              <div><div style="font-size:15px;font-weight:800;color:var(--paper-ink);">92%</div><div style="font-size:10px;color:var(--paper-faint);margin-top:3px;">資料收件</div></div>
+              <div><div style="font-size:12px;font-weight:800;color:#2e9e5b;">完成</div><div style="font-size:10px;color:var(--paper-faint);margin-top:3px;">帳務處理</div></div>
+              <div><div style="font-size:12px;font-weight:800;color:#2e9e5b;">已完成</div><div style="font-size:10px;color:var(--paper-faint);margin-top:3px;">稅務申報</div></div>
+              <div><div style="font-size:12px;font-weight:800;color:var(--accent);">待繳</div><div style="font-size:10px;color:var(--paper-faint);margin-top:3px;">繳稅</div></div>
+            </div>
+            <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div style="background:var(--paper-warm);border-radius:10px;padding:11px 13px;"><div class="card-title" style="margin-bottom:6px;">本期待辦</div><div style="font-size:11.5px;color:var(--paper-ink);line-height:1.7;">缺紙本憑證 2 張<br>待確認費用 1 筆</div></div>
+              <div style="background:var(--paper-warm);border-radius:10px;padding:11px 13px;"><div class="card-title" style="margin-bottom:6px;">下一個重要期限</div><div style="font-size:14px;font-weight:800;color:var(--paper-ink);">09 / 15</div><div style="font-size:11px;color:var(--paper-soft);margin-top:2px;">營業稅繳納</div></div>
             </div>
           </div>
         </div>
@@ -798,25 +898,173 @@
     </div>
   </section>
 
-  <!-- FEATURE: Client Tax Center -->
+  <!-- 02 · THE DISCONNECTED CLIENT -->
+  <section>
+    <div class="wrap split-hero">
+      <div class="reveal">
+        <span class="eyebrow">THE DISCONNECTED CLIENT</span>
+        <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">客戶只有一個，<br>資訊卻散落在五個地方。</h2>
+        <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.8;">案件在 Excel、文件在資料夾、對話在 LINE、期限靠行事曆、繳稅進度又是另一張表。當資訊分散，事務所真正花掉的時間，不只是處理帳務，而是不斷確認：現在做到哪？誰在處理？還缺什麼？客戶繳了嗎？</p>
+      </div>
+      <div class="disperse-wrap reveal" aria-hidden="true">
+        <div class="disperse-core">CLIENT<br>360</div>
+        <svg class="disperse-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+          <g stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 6" opacity="0.4">
+            <line x1="200" y1="150" x2="70" y2="55"/>
+            <line x1="200" y1="150" x2="60" y2="150"/>
+            <line x1="200" y1="150" x2="80" y2="245"/>
+            <line x1="200" y1="150" x2="330" y2="60"/>
+            <line x1="200" y1="150" x2="335" y2="230"/>
+          </g>
+        </svg>
+        <div class="disperse-node" style="left:17%;top:18%;">LINE</div>
+        <div class="disperse-node" style="left:12%;top:50%;">Excel</div>
+        <div class="disperse-node" style="left:18%;top:82%;">紙本</div>
+        <div class="disperse-node" style="left:84%;top:20%;">Email</div>
+        <div class="disperse-node" style="left:85%;top:78%;">Calendar</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · ONE CLIENT, ONE WORKSPACE -->
   <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
-      <div class="feature flip">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">ONE CLIENT. ONE WORKSPACE.</span>
+        <h2 style="margin-top:14px;">不再找資料，<br>直接進入客戶。</h2>
+        <p style="margin-top:14px;color:var(--ink-soft);font-size:15px;">每一位客戶都有獨立工作空間，將服務、文件、帳務、稅務、待辦與溝通放在同一個視角。</p>
+      </div>
+      <div class="reveal" style="margin-top:44px;">
+        <div class="frame">
+          <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">Client 360 · ABC 科技 · Overview</span></div>
+          <div class="ws-shell">
+            <aside class="ws-side">
+              <div class="cl">ABC 科技</div>
+              <a class="on">Overview</a>
+              <a>基本資料</a>
+              <a>服務項目</a>
+              <a>文件中心</a>
+              <a>帳務作業</a>
+              <a>稅務申報</a>
+              <a>繳稅紀錄</a>
+              <a>任務與待辦</a>
+              <a>溝通紀錄</a>
+              <a>歷史紀錄</a>
+            </aside>
+            <div class="ws-main">
+              <div class="ws-card"><div class="wk">01 · 本期狀態</div><div class="wv">78%</div><div class="wd">7–8 月帳務進度</div></div>
+              <div class="ws-card"><div class="wk">02 · 資料完整度</div><div class="wv">92%</div><div class="wd">缺 2 張紙本正本</div></div>
+              <div class="ws-card"><div class="wk">03 · 稅務</div><div class="wv" style="font-size:14px;color:#2e9e5b;">已申報</div><div class="wd">營業稅</div></div>
+              <div class="ws-card"><div class="wk">04 · 繳稅</div><div class="wv" style="font-size:16px;">NT$112,150</div><div class="wd">待客戶繳款</div></div>
+              <div class="ws-card"><div class="wk">05 · 待辦</div><div class="wv">3</div><div class="wd">Tasks</div></div>
+              <div class="ws-card"><div class="wk">06 · 下一期限</div><div class="wv">09/15</div><div class="wd">營業稅繳納期限</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · SERVICE PROGRESS TIMELINE -->
+  <section>
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">SERVICE PROGRESS</span>
+        <h2 style="margin-top:14px;">不只是知道客戶是誰。<br>更知道他現在走到哪裡。</h2>
+      </div>
+      <div class="reveal split-panel" style="margin-top:44px;">
+        <div class="frame">
+          <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC 科技 · 服務進度</span></div>
+          <div style="padding:22px 20px 18px;">
+            <div class="lprog">
+              <div class="lprog-node done"><span class="lprog-dot"></span><span class="lprog-lb">資料收件</span></div>
+              <div class="lprog-node done"><span class="lprog-dot"></span><span class="lprog-lb">AI 整理</span></div>
+              <div class="lprog-node done"><span class="lprog-dot"></span><span class="lprog-lb">帳務處理</span></div>
+              <div class="lprog-node done"><span class="lprog-dot"></span><span class="lprog-lb">主管覆核</span></div>
+              <div class="lprog-node done"><span class="lprog-dot"></span><span class="lprog-lb">稅務申報</span></div>
+              <div class="lprog-node now"><span class="lprog-dot"></span><span class="lprog-lb">客戶繳稅</span></div>
+              <div class="lprog-node"><span class="lprog-dot"></span><span class="lprog-lb">文件歸檔</span></div>
+            </div>
+            <div style="margin-top:20px;font-size:11.5px;color:var(--paper-faint);text-align:center;">目前階段：<span style="color:var(--accent);font-weight:700;">等待客戶完成繳稅</span></div>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">下一步</span></div>
+          <div style="padding:16px 18px;">
+            <div class="card-title">下一步</div>
+            <div style="font-size:14px;font-weight:700;margin-top:4px;">營業稅待繳</div>
+            <div style="font-family:var(--mono);font-weight:800;font-size:20px;color:var(--accent);margin-top:6px;">NT$112,150</div>
+            <div style="font-size:11px;color:var(--paper-faint);margin-top:4px;">截止日期・09/15</div>
+            <div style="margin-top:14px;display:flex;gap:8px;">
+              <span class="mpill mpill-info" style="cursor:default;">查看稅單</span>
+              <span class="mpill mpill-mut" style="cursor:default;">通知客戶</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · WHAT NEEDS ATTENTION -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="feature">
         <div class="feat-text reveal">
-          <span class="eyebrow">CLIENT TAX CENTER</span>
-          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">一個客戶的所有稅務，<br>一張表看完。</h2>
-          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">在客戶頁面中直接建立稅務總覽，會計人員看的是「ABC 科技今年所有稅務工作」，而不是每一種稅分散在不同表格裡。</p>
+          <span class="eyebrow">WHAT NEEDS ATTENTION?</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">系統不只保存資訊，<br>而是告訴你下一步。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">Coreon 自動整合客戶目前所有待處理事項，讓承辦人不用自己拼湊資訊——不用分別去文件管理查缺件、稅務管理查申報、付款管理查繳稅。</p>
         </div>
         <div class="feat-shot reveal">
           <div class="frame">
-            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC 科技 · 稅務總覽</span></div>
-            <div style="padding:12px 14px">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">需要處理 · 3</span></div>
+            <div class="attn-card">
+              <div class="attn-row c-red">
+                <span class="adot">🔴</span>
+                <div class="abody"><div class="atag">客戶待補</div><div class="atx">紙本發票 × 2・等待客戶提供</div></div>
+                <span class="alink">查看 →</span>
+              </div>
+              <div class="attn-row c-yellow">
+                <span class="adot">🟡</span>
+                <div class="abody"><div class="atag">內部待辦</div><div class="atx">廣告費 NT$48,000・稅務分類待主管確認</div></div>
+                <span class="alink">查看 →</span>
+              </div>
+              <div class="attn-row c-blue">
+                <span class="adot">🔵</span>
+                <div class="abody"><div class="atag">客戶待辦</div><div class="atx">營業稅 NT$112,150・09/15 前完成繳納</div></div>
+                <span class="alink">提醒 →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · TAX & PAYMENT CENTER -->
+  <section>
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="feat-text reveal">
+          <span class="eyebrow">TAX &amp; PAYMENT TRACKING</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">申報完成，<br>不代表服務完成。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">Coreon 將稅務申報與後續繳款直接串接。從稅額確認、稅單提供、期限提醒，到客戶回報與繳款證明，每一步都留在同一位客戶的紀錄裡。不用再問：「這家報完了，但到底繳了沒？」</p>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC 科技 · 稅務總覽 2026</span></div>
+            <div style="padding:16px 18px 14px;">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
+                <div style="background:var(--paper-warm);border-radius:10px;padding:10px 12px;"><div class="card-title" style="margin-bottom:4px;">目前待繳稅款</div><div style="font-family:var(--mono);font-weight:800;font-size:15px;">112,150</div></div>
+                <div style="background:var(--paper-warm);border-radius:10px;padding:10px 12px;"><div class="card-title" style="margin-bottom:4px;">即將到期</div><div style="font-family:var(--mono);font-weight:800;font-size:15px;color:var(--accent);">1</div></div>
+                <div style="background:var(--paper-warm);border-radius:10px;padding:10px 12px;"><div class="card-title" style="margin-bottom:4px;">逾期</div><div style="font-family:var(--mono);font-weight:800;font-size:15px;color:#2e9e5b;">0</div></div>
+              </div>
               <table class="tbl">
-                <thead><tr><th>稅務項目</th><th>所屬期間</th><th>申報狀態</th><th class="c">應繳金額</th><th>繳款狀態</th></tr></thead>
+                <thead><tr><th>稅目</th><th>期間</th><th>申報狀態</th><th class="c">稅額</th><th>繳納狀態</th></tr></thead>
                 <tbody>
                   <tr><td>營業稅</td><td>07–08月</td><td><span class="mpill mpill-ok">已申報</span></td><td class="c tnum">112,150</td><td><span class="mpill mpill-warn">待繳</span></td></tr>
-                  <tr><td>扣繳</td><td>8月</td><td><span class="mpill mpill-ok">已完成</span></td><td class="c tnum">24,800</td><td><span class="mpill mpill-ok">已繳</span></td></tr>
-                  <tr><td>營所稅</td><td>2026年度</td><td><span class="mpill mpill-mut">尚未開始</span></td><td class="c">—</td><td>—</td></tr>
+                  <tr><td>營業稅</td><td>05–06月</td><td><span class="mpill mpill-ok">已完成</span></td><td class="c tnum">86,420</td><td><span class="mpill mpill-ok">已繳</span></td></tr>
+                  <tr><td>扣繳</td><td>08月</td><td><span class="mpill mpill-ok">已完成</span></td><td class="c tnum">24,800</td><td><span class="mpill mpill-ok">已繳</span></td></tr>
+                  <tr><td>營所稅</td><td>2026</td><td><span class="mpill mpill-mut">尚未開始</span></td><td class="c">—</td><td>—</td></tr>
                 </tbody>
               </table>
             </div>
@@ -826,22 +1074,31 @@
     </div>
   </section>
 
-  <!-- FEATURE: Unified Tasks + Payment Tracking -->
-  <section>
+  <!-- 07 · CLIENT PORTAL -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
-      <div class="feature">
-        <div class="feat-text reveal">
-          <span class="eyebrow">UNIFIED CLIENT TASKS &amp; PAYMENT TRACKING</span>
-          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">缺件、申報、繳稅，<br>都是同一個「客戶待辦」。</h2>
-          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">不要讓使用者分別進文件系統、任務系統、報稅系統、繳稅系統才能知道一個客戶發生什麼事。申報完成後，Coreon 也會自動建立繳稅追蹤：到期前 7 天提醒、到期前再次提醒、到期當日提醒客戶與承辦人、逾期自動標記並出現在主管 Dashboard——承辦人不用每天想「我是不是有哪一家忘記提醒」。</p>
-        </div>
-        <div class="feat-shot reveal">
-          <div class="frame">
-            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC科技 · 目前有 3 件事情需要處理</span></div>
-            <div class="todo-card">
-              <div class="todo-row"><span class="tag">客戶待補</span><span class="tx">2 張紙本憑證</span></div>
-              <div class="todo-row"><span class="tag">內部待辦</span><span class="tx">主管覆核 1 筆異常費用</span></div>
-              <div class="todo-row"><span class="tag" style="background:#FBEFD6;color:#9a6410;">客戶待辦</span><span class="tx">營業稅待繳・截止 09/15</span><span class="amt">NT$112,150</span></div>
+      <div class="h2-block center reveal">
+        <span class="eyebrow">CLIENT PORTAL</span>
+        <h2 style="margin-top:14px;">讓客戶，<br>也知道現在該做什麼。</h2>
+        <p style="margin-top:14px;color:var(--ink-soft);font-size:15px;">客戶不用再從 LINE 訊息裡尋找稅單與待辦。登入自己的 Portal，就能直接看到本期服務進度、尚缺資料、待確認事項、稅務申報狀態、待繳稅款、繳納期限與文件稅單。</p>
+      </div>
+      <div class="reveal" style="margin-top:44px;">
+        <div class="portal-shot">
+          <div class="portal-top">
+            <div class="pg">午安，ABC科技</div>
+            <div class="pn">本期服務進度</div>
+            <div class="portal-bar"><i style="width:82%;"></i></div>
+            <div style="margin-top:6px;font-size:11px;opacity:.9;">82%</div>
+          </div>
+          <div class="portal-body">
+            <div class="card-title">我的待辦 · 2</div>
+            <div class="portal-todo">
+              <div><div style="font-size:12.5px;font-weight:700;">補充文件</div><div style="font-size:11px;color:var(--paper-soft);margin-top:2px;">紙本發票 2 張</div></div>
+              <span class="mpill mpill-info" style="cursor:default;">上傳</span>
+            </div>
+            <div class="portal-todo">
+              <div><div style="font-size:12.5px;font-weight:700;">待繳稅款</div><div style="font-size:11px;color:var(--paper-soft);margin-top:2px;">營業稅 NT$112,150・截止 09/15</div></div>
+              <span class="mpill mpill-warn" style="cursor:default;">查看稅單</span>
             </div>
           </div>
         </div>
@@ -849,60 +1106,137 @@
     </div>
   </section>
 
-  <!-- FEATURE: Manager Dashboard -->
-  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <!-- 08 · CLIENT TIMELINE -->
+  <section>
     <div class="wrap">
       <div class="h2-block center reveal">
-        <span class="eyebrow">MANAGER DASHBOARD</span>
-        <h2 style="margin-top:14px;">從單一客戶，<br>延伸到整間事務所。</h2>
-        <p style="margin-top:14px;color:var(--ink-soft);font-size:15px;">主管除了可以進入單一 Client 360，也能看到全部客戶總覽——點「已申報待繳稅 46」，馬上看到是哪 46 家。</p>
+        <span class="eyebrow">CLIENT TIMELINE</span>
+        <h2 style="margin-top:14px;">每一次服務，<br>都成為下一次工作的脈絡。</h2>
+      </div>
+      <div class="htl reveal" style="margin-top:44px;">
+        <div class="htl-row done"><div class="htl-date">09 / 13</div><div class="htl-mark"><span class="htl-dot"></span></div><div class="htl-tx">✓ 客戶完成營業稅繳款<br><span class="who">上傳繳款證明</span></div></div>
+        <div class="htl-row sys"><div class="htl-date">09 / 12</div><div class="htl-mark"><span class="htl-dot"></span></div><div class="htl-tx">→ Coreon 發送繳款提醒</div></div>
+        <div class="htl-row done"><div class="htl-date">09 / 05</div><div class="htl-mark"><span class="htl-dot"></span></div><div class="htl-tx">✓ 營業稅申報完成<br><span class="who">王會計</span></div></div>
+        <div class="htl-row done"><div class="htl-date">09 / 04</div><div class="htl-mark"><span class="htl-dot"></span></div><div class="htl-tx">✓ 主管覆核完成<br><span class="who">Karis Manager</span></div></div>
+        <div class="htl-row done"><div class="htl-date">09 / 02</div><div class="htl-mark"><span class="htl-dot"></span></div><div class="htl-tx">✓ 帳務處理完成</div></div>
+        <div class="htl-row done"><div class="htl-date">08 / 28</div><div class="htl-mark"><span class="htl-dot"></span></div><div class="htl-tx">✓ 本期文件收件完成</div></div>
+      </div>
+      <p class="big-statement center reveal" style="margin-top:40px;">未來換承辦人，也不用重新問：<br>「之前這家客戶是怎麼處理的？」</p>
+    </div>
+  </section>
+
+  <!-- 09 · MANAGER VIEW (dark, client-to-firm transition) -->
+  <section class="acc-dark">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">FROM CLIENT VIEW TO FIRM VIEW</span>
+        <h2 style="margin-top:14px;">不只管理一位客戶。<br>看見整間事務所正在發生什麼。</h2>
       </div>
       <div class="stat-grid reveal">
         <div class="st"><div class="n">286</div><div class="t">服務中客戶</div></div>
         <div class="st"><div class="n">42</div><div class="t">等待客戶補件</div></div>
         <div class="st"><div class="n">31</div><div class="t">帳務處理中</div></div>
-        <div class="st"><div class="n">18</div><div class="t">等待覆核</div></div>
+        <div class="st"><div class="n">18</div><div class="t">待主管覆核</div></div>
         <div class="st warn"><div class="n">46</div><div class="t">已申報待繳稅</div></div>
-        <div class="st warn"><div class="n">5</div><div class="t">即將逾期</div></div>
+        <div class="st warn"><div class="n">5</div><div class="t">3 日內到期</div></div>
         <div class="st err"><div class="n">2</div><div class="t">已逾期</div></div>
+      </div>
+      <div class="reveal" style="margin-top:32px;">
+        <div class="frame" style="max-width:760px;margin:0 auto;">
+          <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">客戶列表</span></div>
+          <table class="tbl">
+            <thead><tr><th>客戶</th><th>本期進度</th><th>下一步</th><th>Deadline</th></tr></thead>
+            <tbody>
+              <tr><td>ABC科技</td><td class="tnum">92%</td><td><span class="mpill mpill-warn">待繳稅</span></td><td class="tnum">09/15</td></tr>
+              <tr><td>DEF設計</td><td class="tnum">67%</td><td><span class="mpill mpill-err">等待補件</span></td><td class="tnum">09/08</td></tr>
+              <tr><td>GHI貿易</td><td class="tnum">84%</td><td><span class="mpill mpill-info">主管覆核</span></td><td class="tnum">Today</td></tr>
+              <tr><td>JKL顧問</td><td class="tnum">100%</td><td><span class="mpill mpill-ok">已完成</span></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURE: Client Health Score -->
+  <!-- 10 · CLIENT HEALTH -->
   <section>
     <div class="wrap">
       <div class="h2-block center reveal">
-        <span class="eyebrow">CLIENT HEALTH SCORE</span>
-        <h2 style="margin-top:14px;">提早知道哪個客戶會出狀況，<br>而不是等事情發生才救火。</h2>
+        <span class="eyebrow">CLIENT HEALTH</span>
+        <h2 style="margin-top:14px;">不等問題發生，<br>Coreon 先找出需要注意的客戶。</h2>
       </div>
-      <div class="health-grid reveal">
-        <div class="health-card warn">
-          <div class="hh">🟡 注意客戶</div>
-          <div class="hrow"><span>資料準時率</span><b>65%</b></div>
-          <div class="hrow"><span>繳稅準時率</span><b>80%</b></div>
-          <div class="hrow"><span>缺件頻率</span><b>高</b></div>
+      <div class="health2-grid reveal">
+        <div class="health2-card">
+          <div class="health2-top"><span class="health2-name">ABC科技</span><span class="health2-score">82 <span style="font-size:12px;color:var(--ink-muted);">/ 100</span></span></div>
+          <div class="health2-mgrid">
+            <div class="health2-m"><div class="ml">資料準時率</div><div class="mv">92%</div></div>
+            <div class="health2-m"><div class="ml">繳稅準時率</div><div class="mv">100%</div></div>
+            <div class="health2-m"><div class="ml">缺件頻率</div><div class="mv">Low</div></div>
+            <div class="health2-m"><div class="ml">帳務異常</div><div class="mv">2</div></div>
+          </div>
         </div>
-        <div class="health-card risk">
-          <div class="hh">🔴 高風險客戶</div>
-          <div class="hrow"><span>資料交件狀況</span><b>經常晚交</b></div>
-          <div class="hrow"><span>繳稅狀況</span><b>連續兩期接近期限才完成</b></div>
-          <div class="hrow"><span>缺件頻率</span><b>經常缺紙本</b></div>
+        <div class="health2-card risk">
+          <div class="health2-top"><span class="health2-name">DEF設計</span><span class="health2-score">48 <span style="font-size:12px;color:var(--ink-muted);">/ 100</span></span></div>
+          <div class="health2-alert">🔴 Attention Required</div>
+          <ul class="health2-list">
+            <li>連續 3 期延遲交件</li>
+            <li>目前缺少 7 份資料</li>
+            <li>3 日內進入申報期限</li>
+            <li>上期繳稅曾逾期</li>
+          </ul>
+          <div style="margin-top:14px;"><a href="#client360" class="btn btn-ghost btn-sm">查看風險 →</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CLIENT 360 CLOSING -->
+  <!-- 11 · SYSTEM ARCHITECTURE -->
   <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">SYSTEM ARCHITECTURE</span>
+        <h2 style="margin-top:14px;">一個客戶中心，<br>串起事務所所有維度的工作。</h2>
+      </div>
+      <div class="arch-wrap reveal" aria-hidden="true">
+        <div class="arch-core">CLIENT<br>360</div>
+        <svg class="arch-svg" viewBox="0 0 500 420" preserveAspectRatio="xMidYMid meet">
+          <g stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 6" opacity="0.35">
+            <line x1="250" y1="185" x2="250" y2="45"/>
+            <line x1="250" y1="185" x2="400" y2="90"/>
+            <line x1="250" y1="185" x2="452" y2="185"/>
+            <line x1="250" y1="185" x2="400" y2="280"/>
+            <line x1="250" y1="185" x2="100" y2="280"/>
+            <line x1="250" y1="185" x2="48" y2="185"/>
+            <line x1="250" y1="185" x2="100" y2="90"/>
+          </g>
+        </svg>
+        <div class="arch-node" style="left:50%;top:11%;"><span>Communication</span></div>
+        <div class="arch-node" style="left:80%;top:21%;"><span>Task</span></div>
+        <div class="arch-node" style="left:90%;top:44%;"><span>Workflow</span></div>
+        <div class="arch-node" style="left:80%;top:67%;"><span>Payment</span></div>
+        <div class="arch-node" style="left:20%;top:67%;"><span>Tax</span></div>
+        <div class="arch-node" style="left:10%;top:44%;"><span>Document</span></div>
+        <div class="arch-node" style="left:20%;top:21%;"><span>Accounting</span></div>
+        <div class="arch-node" style="left:50%;top:83%;"><span>Archive</span></div>
+        <div class="arch-base">
+          <div class="al">COREON INTELLIGENCE LAYER</div>
+          <div class="av">AI Classification · Deadline · Automation · Risk Detection · Knowledge</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · CLIENT 360 CLOSING -->
+  <section>
     <div class="wrap" style="max-width:760px;">
       <div class="h2-block center reveal" style="max-width:100%;">
         <span class="eyebrow">NOT JUST A CRM</span>
-        <h2 style="margin-top:14px;">傳統 CRM 管的是客戶是誰。<br>Coreon Client 360 管的是這個客戶現在正在發生什麼事。</h2>
+        <h2 style="margin-top:14px;">客戶管理，不該只是保存客戶資料。</h2>
       </div>
       <div class="story center reveal" style="margin-top:20px;">
-        <p>服務紀錄、帳務紀錄、稅務紀錄、繳稅紀錄、文件紀錄、溝通紀錄、任務紀錄，最後會形成完整的 Client Operating History——不會因為承辦人離職，就失去所有客戶脈絡。</p>
+        <p>Coreon 把每一位客戶變成一個持續運作的工作空間。從第一份文件，到最後一筆稅款；從一次服務，到長期合作。所有人都知道：現在在哪裡、下一步是什麼、誰需要被處理。</p>
       </div>
+      <p class="big-statement center reveal" style="margin-top:32px;">把專業留給人，把營運交給系統。</p>
     </div>
   </section>
 
