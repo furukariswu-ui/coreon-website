@@ -14,7 +14,7 @@
 </script>
 
 <title>財會稅務｜COREON 會計師事務所營運作業系統</title>
-<meta name="description" content="COREON 財會稅務方案：客戶簽約當下自動生成年度工作行事曆，記帳、定期申報、年度結帳與稅務申報全年持續追蹤，不再等報稅季才發現資料缺漏。">
+<meta name="description" content="COREON 財會稅務方案：客戶簽約當下自動生成年度工作行事曆，智慧憑證辨識與稅務分類，客戶全週期進度一頁掌握，全年持續追蹤不等報稅季才發現資料缺漏。">
 <link rel="canonical" href="https://coreon.tw/industries/accounting/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="COREON">
@@ -84,6 +84,8 @@
 .mflow .step.hi{background:var(--accent);color:#fff}
 .mflow .arrow{color:var(--ink-muted);font-size:13px}
 .mflow .loop{font-size:12px;font-weight:700;color:var(--accent);border:1.5px dashed var(--accent);padding:9px 16px;border-radius:999px}
+.mflow.compact{gap:7px;max-width:900px}
+.mflow.compact .step{font-size:11.5px;padding:8px 13px}
 
 /* two-track diagram */
 .track-wrap{margin-top:52px;display:flex;flex-direction:column;gap:8px}
@@ -101,18 +103,20 @@
 .track-connector .ln{width:1.5px;height:20px;background:repeating-linear-gradient(180deg,var(--accent) 0 4px,transparent 4px 8px)}
 @media(max-width:700px){.track-node{font-size:11.5px;padding:7px 11px}}
 
-/* 4 cycles */
+/* 4 cycles / capability card grids (shared shape) */
 .cyc-grid{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cyc-grid.cols-3{grid-template-columns:repeat(3,1fr)}
 .cyc{background:var(--bg-white);border:1px solid var(--line);border-radius:18px;padding:24px}
 .cyc .k{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700;letter-spacing:.04em}
 .cyc h4{margin-top:8px;font-size:16px;font-weight:700}
+.cyc p.d{margin-top:8px;font-size:12.5px;color:var(--ink-soft);line-height:1.65}
 .cyc ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
 .cyc li{font-size:12.5px;color:var(--ink-soft);line-height:1.6;padding-left:14px;position:relative}
 .cyc li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:var(--ink-muted)}
-@media(max-width:860px){.cyc-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.cyc-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.cyc-grid,.cyc-grid.cols-3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cyc-grid,.cyc-grid.cols-3{grid-template-columns:1fr}}
 
-/* dark year-round section */
+/* dark accent sections */
 .acc-dark{background:#241F1A;color:#EFE9DD}
 .acc-dark .eyebrow{color:var(--accent-2)}
 .acc-dark .h2-block h2{color:#fff}
@@ -146,6 +150,46 @@
 .problem-list .p{display:flex;gap:14px;align-items:flex-start;padding:16px 4px;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-soft);line-height:1.7}
 .problem-list .p:last-child{border-bottom:0}
 .problem-list .p .num{font-family:var(--mono);font-size:13px;font-weight:800;color:var(--ink-muted);flex:none;padding-top:2px}
+
+/* three pillars */
+.pillar-grid{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pillar{background:var(--bg-white);border:1px solid var(--line);border-radius:22px;padding:30px;transition:transform .2s,border-color .2s}
+.pillar:hover{transform:translateY(-3px);border-color:var(--accent)}
+.pillar .pn{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700;letter-spacing:.06em}
+.pillar h3{margin-top:10px;font-size:19px;font-weight:800}
+.pillar .pd{margin-top:6px;font-size:12.5px;color:var(--ink-muted)}
+.pillar ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.pillar li{font-size:11.5px;color:var(--ink-soft);background:var(--bg-sand);padding:5px 10px;border-radius:8px}
+@media(max-width:860px){.pillar-grid{grid-template-columns:1fr}}
+
+/* stat grid (manager dashboard) */
+.stat-grid{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat-grid .st{background:var(--bg-white);border:1px solid var(--line);border-radius:14px;padding:18px}
+.stat-grid .st.warn .n{color:#c9761f}
+.stat-grid .st.err .n{color:#c0432c}
+.stat-grid .st .n{font-weight:800;font-size:25px;color:var(--accent);line-height:1;font-family:var(--mono)}
+.stat-grid .st .t{margin-top:7px;font-size:11.5px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:860px){.stat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.stat-grid{grid-template-columns:1fr}}
+
+/* client health compare cards */
+.health-grid{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.health-card{border-radius:18px;padding:24px;border:1px solid var(--line)}
+.health-card.warn{background:#FBF6E9;border-color:#EEDBA0}
+.health-card.risk{background:#FBEEEA;border-color:#EFC2B0}
+.health-card .hh{font-weight:800;font-size:14.5px}
+.health-card .hrow{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);padding:9px 0;border-bottom:1px solid rgba(24,23,21,.07)}
+.health-card .hrow:last-child{border-bottom:0}
+.health-card .hrow b{color:var(--ink);font-family:var(--mono);font-weight:700}
+@media(max-width:700px){.health-grid{grid-template-columns:1fr}}
+
+/* unified todo card */
+.todo-card{background:var(--paper);border-radius:14px;overflow:hidden}
+.todo-row{display:flex;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--paper-hair)}
+.todo-row:last-child{border-bottom:0}
+.todo-row .tag{font-size:10.5px;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--paper-warm);color:var(--paper-soft);flex:none;white-space:nowrap}
+.todo-row .tx{font-size:13px;color:var(--paper-ink)}
+.todo-row .amt{margin-left:auto;font-family:var(--mono);font-weight:700;font-size:13px;color:var(--accent);flex:none;white-space:nowrap}
 </style>
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -262,11 +306,42 @@
     </div>
   </section>
 
-  <!-- TWO TRACKS -->
-  <section id="dual-track" style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <!-- THREE PILLARS -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="h2-block center reveal">
-        <span class="eyebrow">TWO TRACKS, ONE SYSTEM</span>
+        <span class="eyebrow">THREE SYSTEMS, ONE FIRM</span>
+        <h2 style="margin-top:14px;">Coreon 把會計師事務所，<br>拆成三個互相串接的核心系統。</h2>
+        <p style="margin-top:16px;color:var(--ink-soft);font-size:15px;">一套系統要真正撐起事務所的日常，不能只做流程管理、只做資料辨識，或只是一份客戶名單。以下三個模組共用同一份資料，往下會逐一展開。</p>
+      </div>
+      <div class="pillar-grid reveal">
+        <div class="pillar">
+          <span class="pn">01 · CLIENT 360</span>
+          <h3>Coreon Client 360</h3>
+          <p class="pd">管理人與進度</p>
+          <ul><li>客戶資料</li><li>服務方案</li><li>工作進度</li><li>稅務申報</li><li>繳稅進度</li><li>待辦追蹤</li><li>重要期限</li><li>客戶風險</li></ul>
+        </div>
+        <div class="pillar">
+          <span class="pn">02 · SMART LEDGER</span>
+          <h3>Coreon Smart Ledger</h3>
+          <p class="pd">管理資料與帳務</p>
+          <ul><li>智慧收件</li><li>AI 辨識</li><li>資料標準化</li><li>稅務分類</li><li>帳務分類</li><li>自動加總</li><li>例外覆核</li><li>紙本憑證追蹤</li></ul>
+        </div>
+        <div class="pillar">
+          <span class="pn">03 · WORKFLOW</span>
+          <h3>Coreon Workflow</h3>
+          <p class="pd">管理事務所如何運作</p>
+          <ul><li>任務</li><li>承辦</li><li>覆核</li><li>Deadline</li><li>年度工作</li><li>申報排程</li><li>內部簽核</li><li>營運 Dashboard</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO TRACKS (Workflow pillar) -->
+  <section id="dual-track">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">WORKFLOW · TWO TRACKS, ONE SYSTEM</span>
         <h2 style="margin-top:14px;">客戶怎麼進來，<br>決定了系統怎麼安排接下來一整年。</h2>
       </div>
       <div class="story center reveal" style="margin-top:20px;">
@@ -303,7 +378,7 @@
   </section>
 
   <!-- FEATURE: 建立服務項目 -->
-  <section>
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="feature">
         <div class="feat-text reveal">
@@ -352,7 +427,7 @@
   </section>
 
   <!-- 4 CYCLES -->
-  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <section>
     <div class="wrap">
       <div class="h2-block center reveal">
         <span class="eyebrow">FOUR WORK CYCLES</span>
@@ -479,8 +554,360 @@
     </div>
   </section>
 
-  <!-- REAL PROBLEM -->
+  <!-- ══════════ SMART LEDGER PILLAR ══════════ -->
+
+  <!-- SMART LEDGER INTRO -->
+  <section id="smart-ledger" style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">COREON SMART LEDGER · 智慧憑證與帳務中心</span>
+        <h2 style="margin-top:14px;">從「收資料」開始，<br>就讓每一筆帳務進入正確流程。</h2>
+      </div>
+      <div class="story center reveal" style="margin-top:20px;">
+        <p>會計師事務所每天面對的，不只是帳務工作本身。更多時間，往往消耗在不同格式的資料整理、紙本憑證核對、客戶缺件追蹤、人工分類與重複輸入。客戶可能透過 LINE、Email、Excel、PDF、照片、電子發票，甚至直接寄送整袋紙本憑證——真正的問題不是資料不夠，而是資料沒有被整理成可以直接工作的格式。</p>
+      </div>
+      <p class="big-statement center reveal" style="margin-top:32px;">資料進來，自動整理。稅務判斷，有跡可循。<br>紙本正本，也能被系統管理。</p>
+      <div class="mflow compact reveal" style="margin-top:44px;">
+        <span class="step">智慧收件</span><span class="arrow">→</span>
+        <span class="step">文件辨識</span><span class="arrow">→</span>
+        <span class="step">資料標準化</span><span class="arrow">→</span>
+        <span class="step">稅務分類</span><span class="arrow">→</span>
+        <span class="step">帳務分類</span><span class="arrow">→</span>
+        <span class="step">異常檢查</span><span class="arrow">→</span>
+        <span class="step">人工覆核</span><span class="arrow">→</span>
+        <span class="step">自動加總</span><span class="arrow">→</span>
+        <span class="step hi">申報作業</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Smart Intake + AI Recognition -->
+  <section>
+    <div class="wrap">
+      <div class="feature">
+        <div class="feat-text reveal">
+          <span class="eyebrow">SMART INTAKE &amp; AI RECOGNITION</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">客戶不用先學會，<br>「事務所的格式」。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">電子發票、紙本發票、收據、Excel、PDF、手機照片、銀行明細、信用卡帳單、薪資資料、勞務報酬資料、租賃文件——不論資料原本長什麼樣子，都先進入同一個 Coreon Intake Hub，不再散落在 LINE、Email、Google Drive 與紙本資料夾之間。</p>
+          <div class="feat-list">
+            <div class="li"><span class="tick">◆</span><span><b>多來源統一入口</b>：客戶用他習慣的方式交件就好，不用學事務所的規則。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>自動判斷文件類型</b>：這是一張紙本統一發票、一份勞務報酬資料，還是一份銀行交易明細。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>欄位自動抓取</b>：日期、憑證號碼、統一編號、公司名稱、未稅金額、稅額、含稅金額、交易對象，不用再一筆一筆 Key 入。</span></div>
+          </div>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">AI 文件辨識 · 紙本統一發票</span></div>
+            <div style="padding:16px 18px">
+              <div class="card-title">系統判斷：紙本統一發票</div>
+              <table class="tbl">
+                <tbody>
+                  <tr><td style="color:var(--paper-soft)">日期</td><td class="r tnum" style="text-align:right;">2026/08/12</td></tr>
+                  <tr><td style="color:var(--paper-soft)">憑證號碼</td><td class="r tnum" style="text-align:right;">AB-12345678</td></tr>
+                  <tr><td style="color:var(--paper-soft)">統一編號</td><td class="r tnum" style="text-align:right;">12345678</td></tr>
+                  <tr><td style="color:var(--paper-soft)">未稅金額</td><td class="r tnum" style="text-align:right;">18,600</td></tr>
+                  <tr><td style="color:var(--paper-soft)">稅額</td><td class="r tnum" style="text-align:right;">930</td></tr>
+                  <tr><td style="color:var(--paper-soft)">含稅金額</td><td class="r tnum" style="text-align:right;">19,530</td></tr>
+                </tbody>
+              </table>
+              <div style="margin-top:10px"><span class="mpill mpill-ok">✓ 自動抓取完成</span> <span class="mpill mpill-mut">待人工確認</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Tax Classification + Smart Buckets -->
   <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="feat-text reveal">
+          <span class="eyebrow">TAX CLASSIFICATION &amp; SMART BUCKETS</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">一張憑證，<br>不會只有「可以扣」或「不能扣」。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">Coreon 依照不同稅務目的建立多重分類：是否進入營業稅申報流程、是否屬於營所稅費用認列項目、是否涉及薪資或勞務報酬的扣繳作業、是否需要進入固定資產管理，同時建議適合的會計科目。同一筆資料可以同時具有「文件類型 × 稅務用途 × 會計科目 × 申報用途」，而不是被迫只能放進一個資料夾。</p>
+          <div class="feat-list">
+            <div class="li"><span class="tick">◆</span><span><b>多維度同時判斷</b>：營業稅、營所稅、扣繳、固定資產、會計科目一次到位。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>自動拆分工作池</b>：大量資料自動歸類到對應的稅務工作池，不用從頭整理。</span></div>
+          </div>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">本月匯入 326 筆 · 自動拆分</span></div>
+            <div style="padding:16px 18px">
+              <div class="card-title">Smart Tax Buckets</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--paper-hair);"><span>營業稅申報池</span><span class="tnum" style="font-weight:700;">182 筆</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--paper-hair);"><span>營所稅費用池</span><span class="tnum" style="font-weight:700;">267 筆</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--paper-hair);"><span>固定資產</span><span class="tnum" style="font-weight:700;">12 筆</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--paper-hair);"><span>薪資／勞務／扣繳</span><span class="tnum" style="font-weight:700;">21 筆</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--paper-hair);"><span style="color:var(--accent);font-weight:700;">需要人工確認</span><span class="tnum" style="font-weight:700;color:var(--accent);">8 筆</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:7px 0;"><span style="color:#a63a27;font-weight:700;">異常文件</span><span class="tnum" style="font-weight:700;color:#a63a27;">5 筆</span></div>
+              </div>
+              <div style="margin-top:10px;font-size:11px;color:var(--paper-faint);">會計人員不再從 326 筆資料開始整理，直接處理真正需要專業判斷的那幾筆。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Exception First -->
+  <section>
+    <div class="wrap">
+      <div class="feature">
+        <div class="feat-text reveal">
+          <span class="eyebrow">EXCEPTION FIRST</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">把人的時間，<br>留給真正的例外。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">Coreon AI 先處理大量規則性工作，再把不確定的資料挑出來——統編疑似錯誤、金額異常、發票重複、文件模糊、稅務分類不確定、缺少必要欄位、缺少紙本正本、與過往帳務習慣不同、金額超過異常門檻。會計人員的工作，不再是「全部重新做一次」，而是確認系統找出的例外。</p>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">本期處理狀態</span></div>
+            <div style="padding:18px 20px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                <div class="card-title" style="margin:0;">AI 已完成判斷</div>
+                <div style="font-family:var(--mono);font-weight:800;font-size:24px;color:#2e9e5b;">94%</div>
+              </div>
+              <div style="margin-top:8px;height:6px;border-radius:99px;background:var(--paper-hair);overflow:hidden;"><div style="width:94%;height:100%;background:#2e9e5b;"></div></div>
+              <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12.5px;color:var(--paper-soft);">待人工覆核</span><span class="mpill mpill-warn">18 筆</span></div>
+              <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:7px;">
+                <span class="mpill mpill-mut">統編疑似錯誤</span><span class="mpill mpill-mut">金額異常</span><span class="mpill mpill-mut">發票重複</span><span class="mpill mpill-mut">文件模糊</span><span class="mpill mpill-mut">缺紙本正本</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Physical Document Tracking -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="feat-text reveal">
+          <span class="eyebrow">PHYSICAL DOCUMENT TRACKING</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">紙本正本，<br>掃描之後到底在哪裡？</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">紙本發票最大的問題，不是不能數位化，而是掃描之後那張正本到底在哪裡。Coreon 為每張紙本建立一個「Digital Twin」——數位資料與實體資料永遠對應。客戶也可以先拍照掃描讓帳務作業先開始，正本統一寄送後事務所再核銷，紙本物流不用成為整個流程的瓶頸。</p>
+          <div class="feat-list">
+            <div class="li"><span class="tick">◆</span><span><b>Scan First, Original Later</b>：先掃描辨識、進入初步分類，正本後補、收到後直接核銷。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>Batch QR Code</b>：每批交件產生專屬 QR Code，掃描就知道應收 / 已收 / 缺件數量。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>實體位置定位</b>：客戶→年度→月份→憑證類型→冊次→序號，多年後也能直接找到原始文件。</span></div>
+          </div>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="mini-stack">
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">紙本發票 #P260800138 · Digital Twin</span></div>
+              <div style="padding:14px 16px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div>
+                    <div class="card-title">數位資料</div>
+                    <div style="font-size:11.5px;color:var(--paper-soft);line-height:2;">日期・金額・稅額<br>廠商・稅務分類<br>會計科目</div>
+                  </div>
+                  <div>
+                    <div class="card-title">實體資料</div>
+                    <div style="font-size:11.5px;color:var(--paper-soft);line-height:2;">正本狀態・收件日期<br>歸檔位置・冊次<br>是否已裝訂</div>
+                  </div>
+                </div>
+                <div style="margin-top:10px"><span class="mpill mpill-ok">✓ 數位與實體已對應</span></div>
+              </div>
+            </div>
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC科技｜2026年08月憑證批次</span></div>
+              <div style="padding:14px 16px;display:flex;align-items:center;gap:16px;">
+                <div style="width:56px;height:56px;border-radius:10px;background:var(--paper-warm);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;">▦</div>
+                <div style="flex:1;">
+                  <div style="display:flex;justify-content:space-between;font-size:12px;padding:2px 0;"><span style="color:var(--paper-soft);">應收</span><span class="tnum" style="font-weight:700;">58 張</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;padding:2px 0;"><span style="color:var(--paper-soft);">已收到</span><span class="tnum" style="font-weight:700;color:#2e9e5b;">55 張</span></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12px;padding:2px 0;"><span style="color:var(--paper-soft);">缺件</span><span class="tnum" style="font-weight:700;color:#a63a27;">3 張</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMART LEDGER: 6 capabilities -->
+  <section>
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">SIX CORE CAPABILITIES</span>
+        <h2 style="margin-top:14px;">Coreon Smart Ledger<br>六大核心能力。</h2>
+      </div>
+      <div class="cyc-grid cols-3 reveal">
+        <div class="cyc"><span class="k">01</span><h4>智慧收件</h4><p class="d">不同格式、不同來源，一個入口管理。</p></div>
+        <div class="cyc"><span class="k">02</span><h4>AI 辨識</h4><p class="d">自動讀取發票、收據、報表與各類帳務文件。</p></div>
+        <div class="cyc"><span class="k">03</span><h4>稅務分類</h4><p class="d">自動拆分不同稅務與申報用途。</p></div>
+        <div class="cyc"><span class="k">04</span><h4>自動勾稽</h4><p class="d">金額、文件、帳務與申報資料同步核對。</p></div>
+        <div class="cyc"><span class="k">05</span><h4>例外覆核</h4><p class="d">讓會計人員只處理真正需要判斷的問題。</p></div>
+        <div class="cyc"><span class="k">06</span><h4>實體憑證追蹤</h4><p class="d">紙本正本從收件、核對、裝訂到歸檔全部可追蹤。</p></div>
+      </div>
+      <p class="big-statement center reveal" style="margin-top:44px;">找發票、拆 Excel、重新輸入、核對缺件、人工加總、翻紙本，不該是會計人員的工作。<br>判斷、覆核、風險辨識、稅務分析與專業建議才是。</p>
+    </div>
+  </section>
+
+  <!-- ══════════ CLIENT 360 PILLAR ══════════ -->
+
+  <!-- CLIENT 360 INTRO -->
+  <section class="acc-dark">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">COREON CLIENT 360 · 客戶全週期管理中心</span>
+        <h2 style="margin-top:14px;">客戶現在做到哪裡、還缺什麼、<br>下一個期限是什麼——一頁掌握。</h2>
+      </div>
+      <div class="story center reveal" style="margin-top:20px;">
+        <p>會計師事務所管理的，不只是客戶基本資料，而是這個客戶現在正在發生什麼事：帳務進度、稅務申報、是否已繳稅、有哪些待辦、下一個重要期限。Coreon 不把「繳稅進度」做成獨立功能，而是直接整合進每一位客戶的完整管理頁面。</p>
+      </div>
+      <p class="big-statement center reveal" style="margin-top:32px;color:#fff;">一個客戶，一個營運視角。<br><span style="font-size:15px;font-weight:500;color:#C9C0AF;">從收件、帳務、申報到繳稅，全部集中管理。</span></p>
+    </div>
+  </section>
+
+  <!-- FEATURE: Client Overview -->
+  <section>
+    <div class="wrap">
+      <div class="feature">
+        <div class="feat-text reveal">
+          <span class="eyebrow">ONE CLIENT, ONE VIEW</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">打開一個客戶，<br>就看到完整狀態。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">進入 ABC 科技的客戶頁面，會計人員可以直接看到基本資訊、本期帳務進度、稅務申報進度、繳稅進度、待辦事項與重要期限——不需要再切換 CRM、Excel、LINE、Email、稅務表格與工作清單。</p>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">Client 360 · ABC 科技</span></div>
+            <div style="padding:16px 18px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+                <div style="font-size:15px;font-weight:700;">ABC 科技</div>
+                <span class="mpill mpill-ok">合作中</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>本期資料</span><span class="tnum" style="font-weight:700;">92% 已收齊</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>帳務</span><span class="mpill mpill-ok">已完成</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>稅務申報</span><span class="mpill mpill-ok">已申報</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--paper-hair);"><span>繳稅</span><span class="mpill mpill-warn">待客戶完成</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:12.5px;padding:6px 0;"><span>下一期限</span><span class="tnum" style="font-weight:700;color:var(--accent);">09/15</span></div>
+              </div>
+              <div style="margin-top:10px"><span class="mpill mpill-err">異常：缺 2 張紙本正本</span></div>
+              <div style="margin-top:10px;font-size:11px;color:var(--paper-faint);">主管一眼就知道：這個客戶不是還沒做完帳，而是現在卡在「等待客戶繳稅」。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Client Tax Center -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="feat-text reveal">
+          <span class="eyebrow">CLIENT TAX CENTER</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">一個客戶的所有稅務，<br>一張表看完。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">在客戶頁面中直接建立稅務總覽，會計人員看的是「ABC 科技今年所有稅務工作」，而不是每一種稅分散在不同表格裡。</p>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC 科技 · 稅務總覽</span></div>
+            <div style="padding:12px 14px">
+              <table class="tbl">
+                <thead><tr><th>稅務項目</th><th>所屬期間</th><th>申報狀態</th><th class="c">應繳金額</th><th>繳款狀態</th></tr></thead>
+                <tbody>
+                  <tr><td>營業稅</td><td>07–08月</td><td><span class="mpill mpill-ok">已申報</span></td><td class="c tnum">112,150</td><td><span class="mpill mpill-warn">待繳</span></td></tr>
+                  <tr><td>扣繳</td><td>8月</td><td><span class="mpill mpill-ok">已完成</span></td><td class="c tnum">24,800</td><td><span class="mpill mpill-ok">已繳</span></td></tr>
+                  <tr><td>營所稅</td><td>2026年度</td><td><span class="mpill mpill-mut">尚未開始</span></td><td class="c">—</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Unified Tasks + Payment Tracking -->
+  <section>
+    <div class="wrap">
+      <div class="feature">
+        <div class="feat-text reveal">
+          <span class="eyebrow">UNIFIED CLIENT TASKS &amp; PAYMENT TRACKING</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">缺件、申報、繳稅，<br>都是同一個「客戶待辦」。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">不要讓使用者分別進文件系統、任務系統、報稅系統、繳稅系統才能知道一個客戶發生什麼事。申報完成後，Coreon 也會自動建立繳稅追蹤：到期前 7 天提醒、到期前再次提醒、到期當日提醒客戶與承辦人、逾期自動標記並出現在主管 Dashboard——承辦人不用每天想「我是不是有哪一家忘記提醒」。</p>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">ABC科技 · 目前有 3 件事情需要處理</span></div>
+            <div class="todo-card">
+              <div class="todo-row"><span class="tag">客戶待補</span><span class="tx">2 張紙本憑證</span></div>
+              <div class="todo-row"><span class="tag">內部待辦</span><span class="tx">主管覆核 1 筆異常費用</span></div>
+              <div class="todo-row"><span class="tag" style="background:#FBEFD6;color:#9a6410;">客戶待辦</span><span class="tx">營業稅待繳・截止 09/15</span><span class="amt">NT$112,150</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Manager Dashboard -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">MANAGER DASHBOARD</span>
+        <h2 style="margin-top:14px;">從單一客戶，<br>延伸到整間事務所。</h2>
+        <p style="margin-top:14px;color:var(--ink-soft);font-size:15px;">主管除了可以進入單一 Client 360，也能看到全部客戶總覽——點「已申報待繳稅 46」，馬上看到是哪 46 家。</p>
+      </div>
+      <div class="stat-grid reveal">
+        <div class="st"><div class="n">286</div><div class="t">服務中客戶</div></div>
+        <div class="st"><div class="n">42</div><div class="t">等待客戶補件</div></div>
+        <div class="st"><div class="n">31</div><div class="t">帳務處理中</div></div>
+        <div class="st"><div class="n">18</div><div class="t">等待覆核</div></div>
+        <div class="st warn"><div class="n">46</div><div class="t">已申報待繳稅</div></div>
+        <div class="st warn"><div class="n">5</div><div class="t">即將逾期</div></div>
+        <div class="st err"><div class="n">2</div><div class="t">已逾期</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: Client Health Score -->
+  <section>
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">CLIENT HEALTH SCORE</span>
+        <h2 style="margin-top:14px;">提早知道哪個客戶會出狀況，<br>而不是等事情發生才救火。</h2>
+      </div>
+      <div class="health-grid reveal">
+        <div class="health-card warn">
+          <div class="hh">🟡 注意客戶</div>
+          <div class="hrow"><span>資料準時率</span><b>65%</b></div>
+          <div class="hrow"><span>繳稅準時率</span><b>80%</b></div>
+          <div class="hrow"><span>缺件頻率</span><b>高</b></div>
+        </div>
+        <div class="health-card risk">
+          <div class="hh">🔴 高風險客戶</div>
+          <div class="hrow"><span>資料交件狀況</span><b>經常晚交</b></div>
+          <div class="hrow"><span>繳稅狀況</span><b>連續兩期接近期限才完成</b></div>
+          <div class="hrow"><span>缺件頻率</span><b>經常缺紙本</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT 360 CLOSING -->
+  <section style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap" style="max-width:760px;">
+      <div class="h2-block center reveal" style="max-width:100%;">
+        <span class="eyebrow">NOT JUST A CRM</span>
+        <h2 style="margin-top:14px;">傳統 CRM 管的是客戶是誰。<br>Coreon Client 360 管的是這個客戶現在正在發生什麼事。</h2>
+      </div>
+      <div class="story center reveal" style="margin-top:20px;">
+        <p>服務紀錄、帳務紀錄、稅務紀錄、繳稅紀錄、文件紀錄、溝通紀錄、任務紀錄，最後會形成完整的 Client Operating History——不會因為承辦人離職，就失去所有客戶脈絡。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL PROBLEM -->
+  <section>
     <div class="wrap" style="max-width:820px;">
       <div class="h2-block center reveal" style="max-width:100%;">
         <span class="eyebrow">THE REAL PROBLEM</span>
@@ -503,7 +930,7 @@
       <div class="cta-final reveal">
         <span class="eyebrow">SEE IT IN ACTION</span>
         <h2 style="margin-top:14px;">想看整年度的行事曆怎麼自動排出來？</h2>
-        <p>我們可以安排一次線上示範，用您事務所實際的客戶組成，走一遍從簽約到年度申報的完整流程。</p>
+        <p>我們可以安排一次線上示範，用您事務所實際的客戶組成，走一遍從收件、帳務、申報到繳稅的完整流程。</p>
         <div class="btns">
           <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-primary">透過 LINE 與我們聯繫 →</a>
           <a href="/industries/" class="btn btn-ghost">看其他產業場景</a>
