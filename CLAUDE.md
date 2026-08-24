@@ -3,7 +3,7 @@
 > 這份檔案是這個專案的「活文件」——每次有重大進度或決議都要回來更新，
 > 這樣不管誰（或哪個 AI session）接手，都能從這份檔案掌握完整現況，不用重新問一輪。
 
-> ⚠️ **2026-08-23 重大轉向＋架構重整**：COREON 從「金融融資/補習班/餐飲/飲料連鎖產業ERP」改為「Professional Service Operating System」（服務法律/財會稅務/顧問/建築設計/醫療健康管理）。同日站台架構也大改版，新的5個最上層頁籤：**認識Coreon**(`/understand/`)、**重塑營運**(`/transform/`)、**產業場景**(`/industries/`，內容已改寫成新5產業)、**案例洞察**(`/insights/`)、**關於我們**(`/about/`，URL不變但內容還沒更新)。這5個頁面（`index.html`／`understand/`／`transform/`／`insights/`／`industries/`）共用新的 `css/coreon-v2.css`（暖米`#F8F5EF`+橘`#F36B21`+Inter/Noto Sans TC），跟舊版`css/styles.css`是兩套系統。**`/about/`、`/solutions/finance-lending/`、`/blog/cram-school-line-notification/` 這三頁只更新了nav連結文字（指向新5頁籤），內容跟視覺都還是舊系統，尚未遷移。`/solutions/finance-lending/`（金融融資）、部落格的補習班文章，主題完全不在新的5產業分類裡，等於是孤兒頁面——nav已經不連到finance-lending了（產業不對應，拿掉了），部落格文章還留在`/insights/`裡但標註「較早期定位、跟現在主軸不完全一致」。這兩個孤兒頁面要保留/改寫/下架，需要使用者決定，不要自己處理。** 細節見 `../../EXECUTION_MEMO.md` 決策日誌。
+> ⚠️ **2026-08-23 重大轉向＋架構重整**：COREON 從「金融融資/補習班/餐飲/飲料連鎖產業ERP」改為「Professional Service Operating System」（服務法律/財會稅務/顧問/建築設計/醫療健康管理）。同日站台架構也大改版，新的5個最上層頁籤：**認識Coreon**(`/understand/`)、**重塑營運**(`/transform/`)、**產業場景**(`/industries/`，內容已改寫成新5產業)、**案例洞察**(`/insights/`)、**關於我們**(`/about/`，URL不變但內容還沒更新)。這5個頁面（`index.html`／`understand/`／`transform/`／`insights/`／`industries/`）共用新的 `css/coreon-v2.css`（暖米`#F8F5EF`+橘`#F36B21`+Inter/Noto Sans TC），跟舊版`css/styles.css`是兩套系統。**`/about/`nav連結文字已指向新5頁籤、內容也已在後續回合重寫完成。`/solutions/finance-lending/`與部落格補習班文章這兩個孤兒頁面已於2026-08-24下架（301導向到對應新產業頁），不再是待處理項目。** 細節見 `../../EXECUTION_MEMO.md` 決策日誌，SEO/GEO策略主文件在 `../策略進度/SEO_GEO策略與模組產業切入規劃.md`（2026-08-24已改版，取代舊的產業ERP定位版本）。
 
 ## 專案概況
 - **品牌**：COREON — 產業特化型 ERP／數位轉型解決方案（母公司：威迪數位廣告科技）
@@ -58,8 +58,8 @@
 ### 舊架構殘留（nav已指向新5頁籤，但內容/視覺還是舊系統，未遷移）
 | 頁面 | 網址 | 狀態 |
 |---|---|---|
-| 金融融資管理系統 | `/solutions/finance-lending/` | 🚩 孤兒頁面——主題不在新5產業分類裡，nav已移除連結，需使用者決定保留/改寫/下架 |
-| 部落格：補習班LINE通知系統 | `/blog/cram-school-line-notification/` | 🚩 孤兒頁面——同上，暫掛在`/insights/`並標註「較早期定位」，需使用者決定 |
+| ~~金融融資管理系統~~ | ~~`/solutions/finance-lending/`~~ | ✅ 2026-08-24已下架，`_redirects`設301導向`/industries/finance/`（已實測確認真的回301，不是client-side假重導） |
+| ~~部落格：補習班LINE通知系統~~ | ~~`/blog/cram-school-line-notification/`~~ | ✅ 2026-08-24已下架，`_redirects`設301導向`/insights/`，`/insights/`頁面上原本連過去的連結也已拿掉、改成誠實的「內容籌備中」 |
 | 常見問題（舊版`/faq`規劃） | — | 已被新架構的 `/insights/#faq-list` 取代，不用再另外做 |
 | 聯絡我們／隱私權政策／服務條款 | `/contact` `/privacy-policy` `/terms` | ⬜ 待做（新舊架構都還沒有） |
 
@@ -74,7 +74,7 @@
 ## SEO 規則（每頁必備）
 - `<title>` 30 字內、`meta description` 80–110 字，兩者都要獨一無二
 - Open Graph + Twitter Card
-- JSON-LD（首頁用 Organization，方案頁用 Product + BreadcrumbList，未來 FAQ 頁用 FAQPage）
+- JSON-LD（首頁用 Organization，產業/方案頁用 **SoftwareApplication**（2026-08-24從Product改過來，B2B SaaS用SoftwareApplication語意更準確，也不用像Product那樣被迫交代價格）+ BreadcrumbList，FAQ相關頁用 FAQPage——`/insights/`已有6題範例）
 - 語意化 HTML、`sitemap.xml`、`robots.txt`
 - 圖片一律 WebP，檔名語意化英文，alt 用中文；`images/` 依頁面 slug 分資料夾（`images/home/`、`images/solutions-finance-lending/` 等，已建好空資料夾）
   - **2026-08-23 更新**：先前記錄過「本機 `sips` 無法輸出 WebP」的限制已解決——這台機器有裝 `python3` + Pillow（`pip` 套件，`python3 -c "from PIL import features; features.check('webp')"` 回傳 True），可以用 Pillow 直接做去背／裁切／resize／輸出 WebP／輸出多尺寸 ico，不用再手動用線上工具轉檔或退回存 PNG。之後有新圖片素材要處理，直接寫 Python/Pillow script 處理即可。
