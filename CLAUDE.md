@@ -47,7 +47,8 @@
 | 首頁 | `/` | ✅ 完成（Professional Service Operating System定位，已迭代3版） |
 | 認識 Coreon | `/understand/` | ✅ 完成（9個子主題錨點卡片） |
 | 重塑營運 | `/transform/` | ✅ 完成（**2026-08-23 晚間整頁重做**，11個Section：Hero舊流程→新流程、五大營運摩擦01-05、BPR提問區、COREON Method四階段、AS-IS/TO-BE拖曳比較、三層架構深色區、人／系統分工、標準化不僵化、營運可視化儀表板、Before/After價值對照、流程診斷CTA。**這頁不吃 `css/coreon-v2.css`，改用頁內 `<style>`+`<script>`**，跟新版首頁同樣做法） |
-| 產業場景 | `/industries/` | ✅ 完成（**2026-08-23晚間再次整頁重做**成「短、視覺化、分流用」的Hub頁，不是內容頁：Hero用Core+3產業Layer視覺、Generic vs Coreon對照、8節點Operating Core架構圖、**3個滿寬Editorial Panel（法律/會計/顧問，左右交替排列，這是本頁核心轉換區）**、Industry≠Template說明、More Industries文字列表(Legal/Accounting/Consulting已上線，Architecture/Professional Services/Real Estate Services規劃中)、CTA。3個Panel的CTA暫連到LINE，因為`/industries/legal/`等產業detail page還沒建（brief本身也說「未來再慢慢增加」，這輪沒做）。用`css/coreon-v2.css`共用樣式。） |
+| 產業場景 | `/industries/` | ✅ 完成，**持續擴充中**（2026-08-23晚間整頁重做成「短、視覺化、分流用」的Hub頁：Hero用Core+3產業Layer視覺、Generic vs Coreon對照、8節點Operating Core架構圖、**Editorial Panel區（核心轉換區，左右交替排列）**、Industry≠Template說明、More Industries文字列表、CTA。用`css/coreon-v2.css`共用樣式。**2026-08-24 新增第4個Panel「金融服務」，CTA已連到真正的`/industries/finance/`頁面**——法律/會計/顧問3個Panel的CTA暫時還是連LINE，因為對應detail page還沒建。More Industries列表同步更新成使用者定案的完整7分類：Legal/Accounting/Consulting/Finance（已上線）＋Architecture/Healthcare/Other（規劃中）。） |
+| 產業場景 › 金融服務 | `/industries/finance/` | ✅ 完成（2026-08-24新增，7個產業detail page中第1個上線）。內容來源：使用者提供「威迪管理平台_產品介紹頁」zip（母公司威迪數位廣告科技的既有產品頁），文案／功能說明／mockup UI結構**完全復刻**（通路進件案件分級、謄本AI解析＋實價登錄自動估價、LINE全流程通知、3層資安防護＋AES-256-GCM等），視覺改套用`css/coreon-v2.css`（暖米+橘色調、Noto Sans TC/Inter，拿掉來源原本的Noto Serif TC+JetBrains Mono+全深色主題）。全頁淺色為主，只有資安區塊沿用`/about/`那套`#241F1A`深色重音慣例。品牌置換：nav/footer換成COREON共用版、mockup裡的「威迪平台」品牌標籤與頁尾開發者credit都換成COREON、LINE連結換成COREON自己的`829kkoG`（不是來源的`PaxwIFH`）。 |
 | 案例洞察 | `/insights/` | ✅ 完成（FAQ已有6題真實內容+FAQPage schema；客戶案例/Before-After/產業洞察/流程指南誠實標「內容籌備中」，沒有編造假案例） |
 | 關於我們 | `/about/` | ✅ 完成（2026-08-23重寫：10-section敘事版，60%故事/25%系統視覺/15%產品UI，含CORE+ON呼應、深色Vision區塊、6步驟BPR cascade） |
 
@@ -117,6 +118,20 @@ Personal access tokens → Generate new token (classic)，勾 `repo` 權限）�
 - `coreon.tw` 是在 GoDaddy 買的，Nameserver 已指向 Cloudflare
 - Cloudflare 專案目前顯示為 Workers（`npx wrangler deploy`），不是傳統 Pages 產品，網址型態是
   `coreon-website.furu-kariswu.workers.dev`（已停用/不對外use，正式網址一律用 coreon.tw）
+
+## 產業場景 detail page 進度（7分類，2026-08-24使用者定案）
+法律服務／財會稅務／顧問服務／金融服務／建築設計／醫療健康／其他專業服務。網址慣例 `/industries/<slug>/`。
+| 分類 | slug | 狀態 |
+|---|---|---|
+| 金融服務 | `finance` | ✅ 已上線（2026-08-24，內容源自威迪管理平台產品頁） |
+| 法律服務 | `legal` | ⬜ 待建（hub頁已有Editorial Panel鋪陳） |
+| 財會稅務 | `accounting` | ⬜ 待建（hub頁已有Editorial Panel鋪陳） |
+| 顧問服務 | `consulting` | ⬜ 待建（hub頁已有Editorial Panel鋪陳） |
+| 建築設計 | `architecture` | ⬜ 待建 |
+| 醫療健康 | `healthcare` | ⬜ 待建 |
+| 其他專業服務 | `other` | ⬜ 待建 |
+
+> nav列的「產業場景」目前還是單一連結（沒有做7項下拉選單/mega-menu）。使用者原話是「繼續產業場景底下的選單」，不確定是指這個detail page分類體系本身、還是要真的做nav下拉選單——這輪先把分類體系與第一個detail page做出來，nav下拉選單留給使用者確認要不要做。
 
 ## 待確認/待辦
 - [x] ~~Cloudflare 部署異常~~ **已找到根因並修復（2026-08-02）**：Cloudflare Workers 專案 Settings→Build 顯示「disconnected from your Git account」；根因是 GitHub 上「Cloudflare Workers and Pages」這個 App 的 Repository access 設成「Only select repositories」，清單裡只有 `taiwanrentals-web`、`neibook-windy-finance` 兩個 repo，`coreon-website` 從一開始就沒被加進去（不是憑證過期）。使用者已在 GitHub App 設定裡把 `coreon-website` 加入 Repository access 並存檔，Cloudflare 端「disconnected」警告已消失。**待驗證**：加回權限後还没自動觸發新build，等下一次 push 確認是否真的恢復自動部署，見 `../策略進度/進度追蹤.md`。

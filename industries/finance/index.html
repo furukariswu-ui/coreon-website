@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXDZ6K7RPB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TXDZ6K7RPB');
+</script>
+
+<title>金融服務｜COREON 融資放款營運核心系統</title>
+<meta name="description" content="COREON 金融服務方案：把通路進件、智慧估價、對保撥款、LINE 全流程通知到催收月結，收進同一套系統。為台灣民間金融實務場景打造的營運核心。">
+<link rel="canonical" href="https://coreon.tw/industries/finance/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="COREON">
+<meta property="og:title" content="金融服務｜COREON 融資放款營運核心系統">
+<meta property="og:description" content="把整個放款流程，收進一套系統。通路進件、智慧估價、LINE 全流程通知——為台灣民間金融打造的營運核心。">
+<meta property="og:url" content="https://coreon.tw/industries/finance/">
+<meta property="og:image" content="https://coreon.tw/images/brand/coreon-lockup.webp">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="金融服務｜COREON 融資放款營運核心系統">
+<meta name="twitter:description" content="把整個放款流程，收進一套系統。通路進件、智慧估價、LINE 全流程通知——為台灣民間金融打造的營運核心。">
+<meta name="twitter:image" content="https://coreon.tw/images/brand/coreon-lockup.webp">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/brand/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/coreon-v2.css">
+<style>
+/* ── finance mockup system (ported from 威迪管理平台 product page, retoned to coreon-v2 palette) ── */
+.fin-paper{--paper:var(--bg-white);--paper-warm:var(--bg-sand);--paper-ink:var(--ink);--paper-soft:var(--ink-soft);--paper-faint:var(--ink-muted);--paper-hair:var(--line)}
+.tnum{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.frame{background:var(--paper);border-radius:14px;overflow:hidden;border:1px solid rgba(24,23,21,.08);
+  box-shadow:0 30px 70px -24px rgba(24,23,21,.22),0 8px 22px -12px rgba(24,23,21,.14);color:var(--paper-ink);font-size:13px;line-height:1.5}
+.frame-bar{display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--paper-warm);border-bottom:1px solid var(--paper-hair)}
+.frame-dots{display:flex;gap:5px}
+.frame-dots i{width:9px;height:9px;border-radius:50%;background:rgba(24,23,21,.14);display:block}
+.frame-url{flex:1;text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--paper-faint);
+  background:var(--paper);border-radius:6px;padding:3px 8px;max-width:340px;margin:0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hero-shot{margin-top:52px;position:relative}
+.hero-shot::before{content:"";position:absolute;inset:-6% -4% -10%;z-index:-1;
+  background:radial-gradient(60% 60% at 50% 30%,var(--accent-glow),transparent 70%);filter:blur(10px)}
+
+.mpill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2.5px 9px;border-radius:999px;font-family:var(--sans)}
+.mpill-ok{background:#E7F2EA;color:#227244}
+.mpill-warn{background:#FBEFD6;color:#9a6410}
+.mpill-err{background:#FBE4DE;color:#a63a27}
+.mpill-info{background:#EAF0FB;color:#3a5b86}
+.mpill-mut{background:var(--paper-warm);color:var(--paper-soft)}
+.grade{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12px;padding:3px 11px;border-radius:999px;color:#fff}
+.grade-o{background:var(--accent)}.grade-r{background:#DC5138}.grade-y{background:#E5B93C;color:#4a3c0e}
+
+.app{display:grid;grid-template-columns:132px 1fr;height:396px;background:var(--paper)}
+.app-side{background:var(--paper);border-right:1px solid var(--paper-hair);padding:11px 9px;display:flex;flex-direction:column;gap:2px}
+.app-logo{display:flex;align-items:center;gap:7px;padding:4px 6px 12px}
+.app-logo .m{width:22px;height:22px;border-radius:6px;background:linear-gradient(150deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#fff;font-weight:800;font-size:12px}
+.app-logo b{font-size:11px;color:var(--paper-ink)}
+.app-logo small{display:block;font-family:var(--mono);font-size:6.5px;letter-spacing:.18em;color:var(--paper-faint)}
+.nav-i{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:8px;font-size:11.5px;color:var(--paper-soft)}
+.nav-i .ic{width:13px;height:13px;border-radius:3px;border:1.6px solid currentColor;opacity:.65}
+.nav-i.on{background:var(--accent);color:#fff}
+.nav-i.on .ic{opacity:1;border-color:#fff}
+.app-main{padding:15px 17px;overflow:hidden}
+.app-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:13px}
+.app-h h4{font-size:17px;color:var(--paper-ink);margin:0;font-weight:700}
+.app-h .sub{font-size:10.5px;color:var(--paper-faint)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:13px}
+.kpi{background:var(--paper);border:1px solid var(--paper-hair);border-radius:11px;padding:11px}
+.kpi.dark{background:var(--paper-ink);border-color:var(--paper-ink)}
+.kpi .lb{font-size:9.5px;color:var(--paper-faint);margin-bottom:6px}
+.kpi.dark .lb{color:#b7ab97}
+.kpi .vl{font-family:var(--mono);font-weight:700;font-size:19px;color:var(--paper-ink);line-height:1}
+.kpi.dark .vl{color:var(--paper)}
+.kpi .vl.ok{color:#2e9e5b}.kpi .vl.err{color:#d2543c}
+.kpi .ft{font-size:9px;color:var(--paper-faint);margin-top:6px}
+.tbl{width:100%;border-collapse:collapse;font-size:11px}
+.tbl th{text-align:left;font-weight:500;color:var(--paper-faint);font-size:9.5px;padding:6px 8px;border-bottom:1px solid var(--paper-hair)}
+.tbl td{padding:7px 8px;border-bottom:1px solid var(--paper-hair);color:var(--paper-ink)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .r{text-align:right}
+.card-title{font-size:10px;color:var(--paper-faint);font-weight:700;margin-bottom:9px;letter-spacing:.02em}
+
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.feature.flip .feat-text{order:2}
+.feat-list{margin-top:22px;display:flex;flex-direction:column;gap:13px}
+.feat-list .li{display:flex;gap:11px;font-size:14.5px;color:var(--ink-soft);line-height:1.7}
+.feat-list .li b{color:var(--ink);font-weight:700}
+.feat-list .tick{color:var(--accent);flex:none;margin-top:2px}
+.mini-stack{display:flex;flex-direction:column;gap:18px}
+@media(max-width:860px){.feature{grid-template-columns:1fr;gap:30px}.feature.flip .feat-text{order:0}}
+
+/* capability strip */
+.fin-caps{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-white)}
+.fin-caps-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.fin-cap{padding:30px 22px;border-left:1px solid var(--line)}
+.fin-cap:first-child{border-left:0}
+.fin-cap .n{font-weight:800;font-size:32px;color:var(--accent);line-height:1}
+.fin-cap .t{margin-top:9px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:760px){.fin-caps-in{grid-template-columns:1fr 1fr}.fin-cap:nth-child(-n+2){border-bottom:1px solid var(--line)}.fin-cap:nth-child(odd){border-left:0}}
+
+/* LINE chat mockup */
+.line-shot{background:#8aabce;border-radius:14px;padding:16px 14px 20px;box-shadow:0 30px 70px -26px rgba(24,23,21,.35)}
+.line-top{display:flex;align-items:center;gap:8px;color:#fff;font-size:12px;font-weight:700;padding:2px 4px 14px}
+.line-top .av{width:26px;height:26px;border-radius:50%;background:#06C755;display:grid;place-items:center;font-size:13px}
+.bubble{background:#fff;border-radius:4px 16px 16px 16px;padding:11px 13px;max-width:84%;font-size:12.5px;color:#20242b;line-height:1.55;box-shadow:0 1px 2px rgba(0,0,0,.12);margin-bottom:12px}
+.bubble .bt{font-weight:700;margin-bottom:4px;color:#111}
+.bubble .row{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-size:11.5px;padding:1px 0}
+.bubble .row .k{color:#6b7280}
+.bubble.me{margin-left:auto;background:#9be27d;border-radius:16px 4px 16px 16px}
+.line-note{color:#eaf1f8;font-size:10.5px;text-align:center;font-family:var(--mono)}
+
+/* security — this page's one dark accent section, matching /about/ 的 #241F1A 深色區塊慣例 */
+.fin-dark{background:#241F1A;color:#EFE9DD}
+.fin-dark .eyebrow{color:var(--accent-2)}
+.fin-dark .h2-block h2{color:#fff}
+.fin-dark .story{color:#C9C0AF}
+.shield-grid{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.scard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px}
+.scard .h{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.scard .n{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:grid;place-items:center;color:var(--accent-2);font-family:var(--mono);font-size:13px;font-weight:700}
+.scard h3{font-size:15px;font-weight:700;color:#fff}
+.scard p{margin-top:9px;font-size:13.5px;color:#C9C0AF;line-height:1.7}
+.chips{margin-top:28px;display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+.chip{font-family:var(--mono);font-size:12px;color:#C9C0AF;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:8px 14px;border-radius:999px}
+.chip b{color:var(--accent-2);font-weight:700}
+@media(max-width:760px){.shield-grid{grid-template-columns:1fr}}
+
+/* differentiators */
+.diff-grid{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.diff{background:var(--bg-white);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .2s,border-color .2s}
+.diff:hover{transform:translateY(-3px);border-color:var(--accent)}
+.diff .k{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:12px;font-weight:700}
+.diff h3{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:9px}
+.diff p{font-size:14px;color:var(--ink-soft);line-height:1.7}
+@media(max-width:760px){.diff-grid{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"首頁","item":"https://coreon.tw/"},
+  {"@type":"ListItem","position":2,"name":"產業場景","item":"https://coreon.tw/industries/"},
+  {"@type":"ListItem","position":3,"name":"金融服務","item":"https://coreon.tw/industries/finance/"}
+]}
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" aria-label="COREON 首頁"><img class="nav-logo" src="/images/brand/coreon-horizontal.webp" alt="COREON"></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="開啟選單"><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/understand/">認識 Coreon</a></li>
+      <li><a href="/transform/">重塑營運</a></li>
+      <li><a href="/industries/" aria-current="page">產業場景</a></li>
+      <li><a href="/insights/">案例洞察</a></li>
+      <li><a href="/about/">關於我們</a></li>
+      <li><a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="nav-cta">預約產品體驗</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="fin-paper">
+
+  <!-- HERO -->
+  <section class="page-hero" style="border-bottom:0;padding-bottom:0;">
+    <div class="wrap reveal">
+      <ol class="breadcrumb"><li><a href="/">首頁</a></li><li><a href="/industries/">產業場景</a></li><li>金融服務</li></ol>
+      <span class="eyebrow">FINANCIAL SERVICES OPERATIONS</span>
+      <h1 style="margin-top:16px;">把整個放款流程，<br>收進<span style="color:var(--accent);">一套系統</span>。</h1>
+      <p class="lede">從通路進件、估價核准、對保撥款，到每期催收與金主月結——以一條龍的數位流程，取代散落的 Excel、LINE 群組與紙本帳。專為台灣民間金融的實務場景打造。</p>
+      <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <a class="btn btn-primary" href="https://lin.ee/829kkoG" target="_blank" rel="noopener">預約線上示範 →</a>
+        <a class="btn btn-ghost" href="#channel">看功能亮點</a>
+      </div>
+      <div style="margin-top:28px;display:flex;gap:10px 22px;flex-wrap:wrap;color:var(--ink-muted);font-size:13px;font-family:var(--mono);">
+        <span>三層資安防護</span><span>·</span><span>LINE 全流程通知</span><span>·</span><span>實價登錄自動估價</span><span>·</span><span>謄本 AI 解析</span>
+      </div>
+
+      <div class="hero-shot reveal">
+        <div class="frame">
+          <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">app · 財務報表</span></div>
+          <div class="app">
+            <aside class="app-side">
+              <div class="app-logo"><span class="m">C</span><span><b>COREON</b><small>FINANCE OPS</small></span></div>
+              <span class="nav-i"><span class="ic"></span>總覽</span>
+              <span class="nav-i"><span class="ic"></span>客戶管理</span>
+              <span class="nav-i"><span class="ic"></span>案件管理</span>
+              <span class="nav-i"><span class="ic"></span>財務對帳</span>
+              <span class="nav-i on"><span class="ic"></span>財務報表</span>
+              <span class="nav-i"><span class="ic"></span>通路進件區</span>
+              <span class="nav-i"><span class="ic"></span>稽核日誌</span>
+            </aside>
+            <div class="app-main">
+              <div class="app-h"><h4>財務報表</h4><span class="sub">2026 年 8 月 · 即時</span></div>
+              <div class="kpis">
+                <div class="kpi dark"><div class="lb">進行中貸款</div><div class="vl">49</div><div class="ft">筆</div></div>
+                <div class="kpi"><div class="lb">當月應收</div><div class="vl">517,771</div><div class="ft">本金＋利息</div></div>
+                <div class="kpi"><div class="lb">逾期筆數</div><div class="vl err">16</div><div class="ft">逾期率 32.7%</div></div>
+                <div class="kpi"><div class="lb">全台合計收入</div><div class="vl ok">30,202</div><div class="ft">行政費＋自有利息</div></div>
+              </div>
+              <div class="card-title">每月應收報表 · 節錄</div>
+              <table class="tbl">
+                <thead><tr><th>客戶</th><th class="r">本金</th><th class="r">利息</th><th class="r">行政管理費</th><th>狀態</th></tr></thead>
+                <tbody>
+                  <tr><td>王○○</td><td class="r tnum">12,500</td><td class="r tnum">3,200</td><td class="r tnum">640</td><td><span class="mpill mpill-ok">已繳清</span></td></tr>
+                  <tr><td>陳○○</td><td class="r tnum">8,300</td><td class="r tnum">2,100</td><td class="r tnum">420</td><td><span class="mpill mpill-warn">部分繳款</span></td></tr>
+                  <tr><td>林○○</td><td class="r tnum">15,000</td><td class="r tnum">4,050</td><td class="r tnum">810</td><td><span class="mpill mpill-err">逾期 18 天</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITY STRIP -->
+  <section class="fin-caps reveal" style="padding:0;">
+    <div class="wrap"><div class="fin-caps-in">
+      <div class="fin-cap"><div class="n">3</div><div class="t">種還款方式<br>本息均攤 · 本金均攤 · 只繳息</div></div>
+      <div class="fin-cap"><div class="n">4</div><div class="t">關通路進件流程<br>進件 → 核准 → 立案 → 撥款</div></div>
+      <div class="fin-cap"><div class="n">全</div><div class="t">流程 LINE 自動通知<br>催繳 · 對保 · 撥款 · 進度</div></div>
+      <div class="fin-cap"><div class="n">100%</div><div class="t">操作留痕<br>誰、何時、改了什麼</div></div>
+    </div></div>
+  </section>
+
+  <!-- FEATURE: 通路進件 -->
+  <section id="channel">
+    <div class="wrap">
+      <div class="feature">
+        <div class="feat-text reveal">
+          <span class="eyebrow">CHANNEL INTAKE</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">通路自己送件，<br>你只管把關。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">合作通路擁有獨立入口，可線上送出估價、上傳謄本、即時追蹤審核進度；後台則以四關流程集中控管，每一件走到哪、卡在哪都一目了然。</p>
+          <div class="feat-list">
+            <div class="li"><span class="tick">◆</span><span><b>即時案件分級</b>：系統依謄本設定金額與實價行情自動算出紅／橘／黃燈，高風險件一眼看穿。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>四關流程</b>：進件、核准、立案、撥款，每一關的狀態、經手人與時間都留存。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>分享連結給金主</b>：估價結果可產生對外連結，金主端不需帳號也能安全查看。</span></div>
+          </div>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="frame">
+            <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">app · 通路進件區 / 案件詳情</span></div>
+            <div style="padding:17px 18px">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+                <div><div style="font-size:17px;font-weight:700">陳○○　案件</div>
+                  <div style="font-size:10.5px;color:var(--paper-faint);margin-top:3px">誠信通路 · 業務 張○○ · 8/12 送件</div></div>
+                <span class="grade grade-o">● 橘燈</span>
+              </div>
+              <div style="display:flex;gap:6px;margin-bottom:16px">
+                <div style="flex:1"><div style="height:4px;border-radius:9px;background:#2e9e5b"></div><div style="font-size:9px;color:#2e9e5b;font-weight:700;margin-top:5px">✓ 已進件</div></div>
+                <div style="flex:1"><div style="height:4px;border-radius:9px;background:#2e9e5b"></div><div style="font-size:9px;color:#2e9e5b;font-weight:700;margin-top:5px">✓ 已核准</div></div>
+                <div style="flex:1"><div style="height:4px;border-radius:9px;background:var(--accent)"></div><div style="font-size:9px;color:var(--accent);font-weight:700;margin-top:5px">● 待立案</div></div>
+                <div style="flex:1"><div style="height:4px;border-radius:9px;background:var(--paper-hair)"></div><div style="font-size:9px;color:var(--paper-faint);margin-top:5px">待撥款</div></div>
+              </div>
+              <div style="background:var(--paper-warm);border:1px solid var(--paper-hair);border-radius:11px;padding:13px;margin-bottom:11px">
+                <div class="card-title">案件分級 · 內部參考</div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;padding:2px 0"><span style="color:var(--paper-soft)">實價行情價</span><span>NT$ 12,500,000</span></div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;padding:2px 0"><span style="color:var(--paper-soft)">謄本設定總額</span><span>NT$ 9,300,000</span></div>
+                <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;padding:5px 0 0;margin-top:4px;border-top:1px solid var(--paper-hair)"><span style="color:var(--paper-soft)">可承作空間</span><span style="color:#2e9e5b;font-weight:700">NT$ 3,200,000</span></div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <span class="mpill mpill-info">核准 250 萬</span>
+                <span class="mpill mpill-mut">本息均攤 · 48 期</span>
+                <span class="mpill mpill-mut">年利率 16%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: 智慧估價 -->
+  <section id="appraisal" style="background:var(--bg-white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="feature flip">
+        <div class="feat-text reveal">
+          <span class="eyebrow">SMART APPRAISAL</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">讓系統幫你<br>看謄本、查行情。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">上傳土地／建物謄本，AI 自動抽出權利範圍、他項權利設定金額，並試算土地增值稅；估價時再從內政部實價登錄批次資料，自動帶入標的周邊的成交行情。過去翻謄本、查實價網、按計算機的活，現在幾秒完成。</p>
+          <div class="feat-list">
+            <div class="li"><span class="tick">◆</span><span><b>謄本自動解析</b>：權利範圍、設定金額、共同擔保合併判讀，人工確認後才入庫。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>行情自動帶入</b>：以近三年同區段成交中位數估算，附上樣本數與價格區間。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>土地增值稅試算</b>：串接官方物價指數，估算移轉稅負。</span></div>
+          </div>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="mini-stack">
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">謄本 AI 解析結果</span></div>
+              <div style="padding:15px 16px">
+                <div class="card-title">建物謄本 · 自動抽取</div>
+                <table class="tbl">
+                  <tbody>
+                    <tr><td style="color:var(--paper-soft)">建號</td><td class="r">○○段 1234 建號</td></tr>
+                    <tr><td style="color:var(--paper-soft)">權利範圍</td><td class="r tnum">全部 1/1</td></tr>
+                    <tr><td style="color:var(--paper-soft)">他項權利設定</td><td class="r tnum">NT$ 9,300,000</td></tr>
+                    <tr><td style="color:var(--paper-soft)">土地增值稅（估）</td><td class="r tnum">NT$ 184,000</td></tr>
+                  </tbody>
+                </table>
+                <div style="margin-top:10px"><span class="mpill mpill-ok">✓ 已人工確認入庫</span></div>
+              </div>
+            </div>
+            <div class="frame">
+              <div class="frame-bar"><span class="frame-dots"><i></i><i></i><i></i></span><span class="frame-url">實價行情自動帶入</span></div>
+              <div style="padding:15px 16px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline">
+                  <div class="card-title" style="margin:0">周邊成交行情</div>
+                  <div style="font-family:var(--mono);font-weight:700;font-size:17px;color:var(--paper-ink)">1,250<span style="font-size:11px;color:var(--paper-faint)"> 萬</span></div>
+                </div>
+                <div style="font-size:10.5px;color:var(--paper-soft);margin-top:8px;line-height:1.6">同段 12 筆 · 單價中位數約 <b>38.2 萬/坪</b>（33.5–41.0）<br>資料來源：內政部實價登錄近 3 年</div>
+                <div style="margin-top:9px"><span class="mpill mpill-info">系統自動帶入</span> <span class="mpill mpill-mut">可覆寫</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: LINE 通知 -->
+  <section id="line">
+    <div class="wrap">
+      <div class="feature">
+        <div class="feat-text reveal">
+          <span class="eyebrow">LINE AUTOMATION</span>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.4vw,36px);">該提醒的，<br>LINE 自動送到。</h2>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15.5px;line-height:1.75;">客戶綁定 LINE 後，繳款提醒、逾期催收、對保完成、撥款到帳，都在對的時間自動推播；通路人員與金主也各自收到與自己相關的通知。連多份文件都能直接用官方帳號傳進系統歸檔。</p>
+          <div class="feat-list">
+            <div class="li"><span class="tick">◆</span><span><b>到期前自動催繳</b>，降低逾期率、省下人工電話催收。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>範本可自訂</b>：每一種通知的文字都能在後台改，參數一鍵插入。</span></div>
+            <div class="li"><span class="tick">◆</span><span><b>發送狀況可觀測</b>：排程健康度與訊息用量都看得到，通知停擺會主動告警。</span></div>
+          </div>
+        </div>
+        <div class="feat-shot reveal">
+          <div class="line-shot">
+            <div class="line-top"><span class="av">🔔</span>COREON 官方帳號</div>
+            <div class="bubble">
+              <div class="bt">【繳款提醒】</div>
+              王○○ 您好，您的第 3 期款項將於 <b>08/15</b> 到期。
+              <div class="row"><span class="k">應繳金額</span><span>NT$ 8,500</span></div>
+              <div class="row"><span class="k">　本金</span><span>6,300</span></div>
+              <div class="row"><span class="k">　利息</span><span>2,200</span></div>
+            </div>
+            <div class="bubble">
+              <div class="bt">【撥款完成通知】</div>
+              您的貸款已於 08/03 完成撥款。
+              <div class="row"><span class="k">實撥金額</span><span>NT$ 2,340,000</span></div>
+            </div>
+            <div class="bubble me">收到，謝謝！</div>
+            <div class="line-note">訊息為系統於流程節點自動發送</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY (dark accent) -->
+  <section id="security" class="fin-dark">
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">DATA SECURITY</span>
+        <h2 style="margin-top:14px;">為金融資料而生的資安設計。</h2>
+      </div>
+      <div class="story center reveal" style="margin-top:20px;">
+        <p>放款業務碰的是最敏感的個資與金流。這套系統從第一天就以「縱深防禦」為原則，並已通過完整白箱資安審查。</p>
+      </div>
+      <div class="shield-grid">
+        <div class="scard reveal"><div class="h"><span class="n">01</span><h3>三層存取防護</h3></div><p>路由層權限、資料表列級權限（RLS），加上危險操作在資料庫內的獨立守衛——任何一層都擋得住越權，不靠單點把關。</p></div>
+        <div class="scard reveal"><div class="h"><span class="n">02</span><h3>加密與傳輸</h3></div><p>機密資料以 AES‑256‑GCM 加密儲存，全站強制 HTTPS 與 HSTS，登入 Session 每次驗證 JWT，不留可被冒用的縫隙。</p></div>
+        <div class="scard reveal"><div class="h"><span class="n">03</span><h3>稽核與權限</h3></div><p>每一筆重要操作都留下「誰、何時、改了什麼」的前後快照；四級角色權限確保每個人只看得到職責範圍內的資料。</p></div>
+      </div>
+      <div class="chips reveal">
+        <span class="chip"><b>AES-256-GCM</b> 加密</span>
+        <span class="chip"><b>RLS</b> 資料列權限</span>
+        <span class="chip"><b>稽核日誌</b> 全操作留痕</span>
+        <span class="chip"><b>四級</b> 角色權限</span>
+        <span class="chip"><b>HTTPS / HSTS</b></span>
+        <span class="chip"><b>白箱資安審查</b> 已通過</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATORS -->
+  <section>
+    <div class="wrap">
+      <div class="h2-block center reveal">
+        <span class="eyebrow">WHY COREON FINANCE</span>
+        <h2 style="margin-top:14px;">不是通用 CRM，<br>是為台灣民間金融長出來的。</h2>
+      </div>
+      <div class="diff-grid">
+        <div class="diff reveal"><div class="k">01 在地化</div><h3>台灣場景，原生支援</h3><p>實價登錄、地政謄本、土地增值稅、民國曆、身分證檢核——這些台灣民間金融每天要碰的東西，全都內建，不用另外接。</p></div>
+        <div class="diff reveal"><div class="k">02 一條龍</div><h3>進件到撥款，同一套走完</h3><p>估價、核准、立案、對保、撥款、催收、月結，全在同一個系統裡流轉，不用在多套工具與 Excel 之間人工搬資料。</p></div>
+        <div class="diff reveal"><div class="k">03 協作在線上</div><h3>通路與金主都進得來</h3><p>通路自己送件追蹤、金主用連結看估價，不再靠 LINE 群組傳截圖對帳，責任與紀錄都清清楚楚。</p></div>
+        <div class="diff reveal"><div class="k">04 可觀測</div><h3>營運狀況一目了然</h3><p>逾期帳齡、收款率、排程健康度、LINE 訊息用量——該盯的數字都在儀表板上，出狀況系統會主動提醒。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-final reveal">
+        <span class="eyebrow">SEE IT IN ACTION</span>
+        <h2 style="margin-top:14px;">想看它怎麼跑一遍？</h2>
+        <p>我們可以安排一次線上示範，用您的實際業務情境走完整個流程，再一起評估導入方式。</p>
+        <div class="btns">
+          <a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="btn btn-primary">透過 LINE 與我們聯繫 →</a>
+          <a href="/industries/" class="btn btn-ghost">看其他產業場景</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">COREON</div>
+    <p class="foot-tag">Professional Service Operating System<br>Core Connected. Business On.</p>
+    <ul class="foot-legal">
+      <li><a href="mailto:coreon.tw@gmail.com">coreon.tw@gmail.com</a></li>
+      <li><a href="/privacy-policy">隱私權政策</a></li>
+      <li><a href="/terms">服務條款</a></li>
+    </ul>
+    <p class="foot-copy">© 2026 COREON Systems. All rights reserved. 威迪數位廣告科技旗下專屬企業解決方案品牌。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle) toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion:reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
