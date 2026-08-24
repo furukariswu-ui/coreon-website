@@ -131,7 +131,7 @@ Personal access tokens → Generate new token (classic)，勾 `repo` 權限）�
 | 醫療健康 | `healthcare` | ⬜ 待建 |
 | 其他專業服務 | `other` | ⬜ 待建 |
 
-> nav列的「產業場景」目前還是單一連結（沒有做7項下拉選單/mega-menu）。使用者原話是「繼續產業場景底下的選單」，不確定是指這個detail page分類體系本身、還是要真的做nav下拉選單——這輪先把分類體系與第一個detail page做出來，nav下拉選單留給使用者確認要不要做。
+> **2026-08-24 已補上 nav 下拉選單**：使用者確認要「滑鼠移到產業場景就跳出選單」，全站9個頁面（含舊架構2頁、transform）的nav「產業場景」項目都改成 `<li class="nav-dropdown">`，hover／`:focus-within` 純CSS觸發（無JS）跳出卡片選單：4個已上線項目（金融服務→真正的`/industries/finance/`；法律/財會/顧問→`/industries/#choose`錨點）＋分隔線＋3個「規劃中」灰階項目（建築設計/醫療健康/其他專業服務→`/industries/#more`錨點）＋分隔線＋「產業場景總覽→」連回`/industries/`。手機版（`.nav-links`展開時）選單直接以縮排子清單常駐顯示，不需要另外點開。CSS加在3個地方：`css/coreon-v2.css`（共用給understand/insights/about/industries/industries-finance）、`css/styles.css`（finance-lending/blog舊架構共用）、`transform/index.html`自己的頁內`<style>`（因為這頁不吃共用檔）。**踩到的坑，供之後參考**：①手機版斷點下，既有的`.nav-links a{display:block}`規則specificity比`.nav-dd-item{display:flex}`高，會蓋掉flex排版，最後用`!important`才穩定解決；②意外發現`index.html`（首頁）其實完全沒有`<link>` `css/coreon-v2.css`——它有自己獨立一份內嵌`<style>`（只是色票變數剛好抄得一樣），所以下拉選單CSS另外複製一份貼進首頁自己的`<style>`才生效；③本機`python3 -m http.server`沒有明確`Cache-Control`，瀏覽器會用heuristic快取，這次改CSS改很快、測很快，好幾次看到「沒套用最新樣式」其實是瀏覽器快取到舊版CSS，不是真的CSS錯——用`<link>`元素整個移除重建（換一個帶亂數的`?v=`網址）逼瀏覽器重抓，才能看到真正結果；正式站Cloudflare全新部署不會有這個問題。
 
 ## 待確認/待辦
 - [x] ~~Cloudflare 部署異常~~ **已找到根因並修復（2026-08-02）**：Cloudflare Workers 專案 Settings→Build 顯示「disconnected from your Git account」；根因是 GitHub 上「Cloudflare Workers and Pages」這個 App 的 Repository access 設成「Only select repositories」，清單裡只有 `taiwanrentals-web`、`neibook-windy-finance` 兩個 repo，`coreon-website` 從一開始就沒被加進去（不是憑證過期）。使用者已在 GitHub App 設定裡把 `coreon-website` 加入 Repository access 並存檔，Cloudflare 端「disconnected」警告已消失。**待驗證**：加回權限後还没自動觸發新build，等下一次 push 確認是否真的恢復自動部署，見 `../策略進度/進度追蹤.md`。

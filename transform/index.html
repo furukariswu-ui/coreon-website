@@ -91,6 +91,18 @@ section{position:relative;padding:118px 0}
 .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{content:"";display:block;width:16px;height:1.5px;background:var(--ink);position:relative;margin:0 auto}
 .nav-toggle span::before{position:absolute;top:-6px}.nav-toggle span::after{position:absolute;top:6px}
 
+.nav-dropdown{position:relative}
+.nav-dropdown-panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);opacity:0;visibility:hidden;
+  transition:opacity .18s ease,transform .18s ease;pointer-events:none;background:var(--bg-white);border:1px solid var(--line);
+  border-radius:16px;box-shadow:0 24px 48px -16px rgba(24,23,21,.2);padding:10px;min-width:230px;z-index:70}
+.nav-dropdown:hover .nav-dropdown-panel,.nav-dropdown:focus-within .nav-dropdown-panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.nav-dd-item{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px;border-radius:10px;font-size:14px;color:var(--ink)!important;font-weight:500;white-space:nowrap}
+.nav-dd-item:hover{background:var(--bg-sand);color:var(--ink)!important}
+.nav-dd-item.soon{color:var(--ink-muted)!important}
+.nav-dd-tag{font-size:10.5px;font-weight:700;color:var(--ink-muted);background:var(--bg-sand);padding:2px 8px;border-radius:999px}
+.nav-dd-divider{height:1px;background:var(--line);margin:6px 4px}
+.nav-dd-all{color:var(--accent)!important;font-weight:700;justify-content:flex-start}
+
 /* ============ S01 hero ============ */
 .breadcrumb{list-style:none;display:flex;gap:8px;padding:0;margin:0 0 22px;font-size:13px;color:var(--ink-muted)}
 .breadcrumb a{color:inherit}
@@ -359,6 +371,9 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px;background:var(--bg-
   .nav-links li{width:100%}.nav-links a{display:block;padding:12px 0;width:100%}
   .nav-links .nav-cta{margin-top:8px;text-align:center}
   .nav-toggle{display:inline-flex;align-items:center;justify-content:center}
+  .nav-dropdown-panel{position:static!important;transform:none!important;left:auto!important;opacity:1;visibility:visible;pointer-events:auto;box-shadow:none;border:0;background:transparent;padding:2px 0 6px 16px;min-width:0;display:flex;flex-direction:column}
+  .nav-dd-item{display:flex!important;width:100%!important;padding:8px 0!important;font-size:13.5px}
+  .nav-dd-divider{display:none}
   .wrap{padding-left:22px;padding-right:22px}
   section{padding:76px 0}
   .hero{padding-top:44px;padding-bottom:70px}
@@ -429,7 +444,21 @@ footer{border-top:1px solid var(--line);padding:46px 0 54px;background:var(--bg-
     <ul class="nav-links" id="navLinks">
       <li><a href="/understand/">認識 Coreon</a></li>
       <li><a href="/transform/" aria-current="page">重塑營運</a></li>
-      <li><a href="/industries/">產業場景</a></li>
+      <li class="nav-dropdown">
+        <a href="/industries/">產業場景</a>
+        <div class="nav-dropdown-panel">
+          <a href="/industries/finance/" class="nav-dd-item">金融服務</a>
+          <a href="/industries/#choose" class="nav-dd-item">法律服務</a>
+          <a href="/industries/#choose" class="nav-dd-item">財會稅務</a>
+          <a href="/industries/#choose" class="nav-dd-item">顧問服務</a>
+          <div class="nav-dd-divider"></div>
+          <a href="/industries/#more" class="nav-dd-item soon">建築設計<span class="nav-dd-tag">規劃中</span></a>
+          <a href="/industries/#more" class="nav-dd-item soon">醫療健康<span class="nav-dd-tag">規劃中</span></a>
+          <a href="/industries/#more" class="nav-dd-item soon">其他專業服務<span class="nav-dd-tag">規劃中</span></a>
+          <div class="nav-dd-divider"></div>
+          <a href="/industries/" class="nav-dd-item nav-dd-all">產業場景總覽 →</a>
+        </div>
+      </li>
       <li><a href="/insights/">案例洞察</a></li>
       <li><a href="/about/">關於我們</a></li>
       <li><a href="https://lin.ee/829kkoG" target="_blank" rel="noopener" class="nav-cta">預約產品體驗</a></li>
